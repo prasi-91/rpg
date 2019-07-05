@@ -18,7 +18,7 @@ public class RpgGameServiceImpl {
 		try {
 			return rpgGamesDao.findAll();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_GAMES);
+			throw new GameServiceException(ExceptionMessages.ERROR_FETCHING_GAMES);
 		}
 	}
 
