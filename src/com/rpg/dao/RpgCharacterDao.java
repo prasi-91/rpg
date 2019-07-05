@@ -16,7 +16,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	@Override
 	public List<RpgCharacter> findAll() throws ClassNotFoundException, SQLException {
-		String query = RpgCharacterQueries.SELECT_ALL_CHARACTERS;
+		String query = RpgCharacterQueries.SELECT_ALL_CHARACTERS_QUERY;
 		List<RpgCharacter> rpgCharacterList = new ArrayList<>();
 		Connection con = null;
 		Statement stmt = null;
@@ -41,7 +41,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	@Override
 	public RpgCharacter findByName(String name) throws ClassNotFoundException, SQLException {
-		String query = RpgCharacterQueries.SELECT_A_CHARACTER_BY_NAME;
+		String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_NAME;
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -120,7 +120,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	@Override
 	public RpgCharacter findById(Long id) throws ClassNotFoundException, SQLException {
-		String query = RpgCharacterQueries.SELECT_A_CHARACTER_BY_ID;
+		String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_ID;
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;

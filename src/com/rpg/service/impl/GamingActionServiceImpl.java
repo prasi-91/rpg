@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rpg.domain.RpgCharacter;
+import com.rpg.exception.CharacterServiceException;
 import com.rpg.exploration.factory.Level;
 import com.rpg.exploration.factory.LevelFactory;
 
@@ -20,9 +21,10 @@ public class GamingActionServiceImpl {
 		return strBuil.toString();
 	}
 
-	public List<String> exploreCharacters() {
+	public List<String> exploreCharacters() throws CharacterServiceException {
 		List<String> characterList = new ArrayList<>();
 		final int[] count = { 0 };
+
 		rpgCharacterService.fetchAllRpgCharacters().forEach(item -> {
 			count[0]++;
 			StringBuilder sb = new StringBuilder();
@@ -35,6 +37,7 @@ public class GamingActionServiceImpl {
 			sb.append(" Experience ").append(item.getExperience());
 			characterList.add(sb.toString());
 		});
+
 		return characterList;
 	}
 

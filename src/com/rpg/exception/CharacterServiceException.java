@@ -1,13 +1,15 @@
 package com.rpg.exception;
 
-public class CharacterServiceException extends RuntimeException {
+public class CharacterServiceException extends Exception {
 
-  public CharacterServiceException(String message) {
-    super(message);
-  }   
+	private static final long serialVersionUID = 1L;
 
-  public CharacterServiceException(String message, Throwable t) {
-      super(message, t);
-  }
+	public CharacterServiceException(String message) {
+		super(message);
+	}
+
+	public CharacterServiceException(String message, Throwable t) {
+		super(message, t);
+	}
 
 }

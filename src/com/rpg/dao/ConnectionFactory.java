@@ -11,7 +11,7 @@ public class ConnectionFactory {
 	public static Connection getConnection() throws ClassNotFoundException {
 		try {
 
-			Class.forName("org.sqlite.JDBC");
+			Class.forName(RpGameConstants.DRIVER);
 			return DriverManager.getConnection(RpGameConstants.URL);
 		} catch (SQLException ex) {
 			throw new RuntimeException("Error connecting to the database", ex);
