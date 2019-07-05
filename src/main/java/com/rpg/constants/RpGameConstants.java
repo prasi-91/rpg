@@ -2,7 +2,8 @@ package com.rpg.constants;
 
 public class RpGameConstants {
 
-	public static final String URL = "jdbc:sqlite:C:/sqlLite/RPGame.db";
+	public static final String URL_PREFIX = "jdbc:sqlite:";
+	public static final String URL_SUFFIX = "\\RPGames.db";
 	public static final String DRIVER = "org.sqlite.JDBC";
 
 	public static final String ANSI_RESET = "\u001B[0m";

@@ -1,7 +1,6 @@
 package com.rpg.dao;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public interface AbstractFileDAO<T> {

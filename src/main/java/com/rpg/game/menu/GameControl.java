@@ -15,7 +15,7 @@ public class GameControl {
 		Command cm = getCommandInstance(option);
 		while (!isExitPressed) {
 			if (cm != null) {
-				if (!MessageUtils.isBlank(option)) {
+				if (MessageUtils.isBlank(option)) {
 					MessageUtils.printInvalidOption();
 					continue;
 				}

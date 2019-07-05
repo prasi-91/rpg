@@ -9,7 +9,6 @@ public class CharacterCommand implements Command {
 	boolean isExitPressed;
 	boolean isGoBackPressed;
 	private static RpgCharacterServiceImpl rpgCharacterService = new RpgCharacterServiceImpl();
-	private RpgCharacter rpgCharacter;
 
 	@Override
 	public boolean isExitPressed() {
@@ -41,7 +40,7 @@ public class CharacterCommand implements Command {
 		System.out.println("Enter your weapon");
 		String weapon = ScannerUtil.inputHandler.nextLine();
 		try {
-			rpgCharacter = new RpgCharacter(characterName, weapon, 0);
+			RpgCharacter rpgCharacter = new RpgCharacter(characterName, weapon, 0);
 			rpgCharacterService.createNewCharacter(rpgCharacter);
 			isGoBackPressed = true;
 			System.out.println("Hurray You Have Created Your Own Character");
