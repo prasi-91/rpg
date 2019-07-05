@@ -83,7 +83,8 @@ public class GameCommand implements Command {
 				System.out.println("Select the game name to resume");
 				gameList.forEach(item -> System.out.println(item.getGameName()));
 			} else {
-				System.out.println("No Game create please go back and select menu to create new game");
+				System.out.println("There are no saved games please go back and select menu to create new game");
+				return;
 			}
 			String gameSelected = ScannerUtil.inputHandler.nextLine();
 			GameActionCommand gm = new GameActionCommand();
