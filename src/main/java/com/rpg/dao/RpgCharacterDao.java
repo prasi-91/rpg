@@ -32,8 +32,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 		} catch (SQLException e) {
 			throw e;
 		} finally {
-			stmt.close();
-			con.close();
+			DAOUtils.closeAll(rs, con, stmt);
 		}
 
 		return rpgCharacterList;
@@ -54,8 +53,6 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 			if (rs.next()) {
 				return extractResultSet(rs);
 			}
-		} catch (SQLException e) {
-			throw e;
 		} finally {
 			DAOUtils.closeAll(rs, con, stmt);
 		}
