@@ -1,7 +1,7 @@
 package com.rpg.game.menu;
 
 import com.rpg.constants.RpGameConstants;
-import com.rpg.util.MenuUtils;
+import com.rpg.util.MessageUtils;
 
 public class GameControl {
 
@@ -15,8 +15,8 @@ public class GameControl {
 		Command cm = getCommandInstance(option);
 		while (!isExitPressed) {
 			if (cm != null) {
-				if (!MenuUtils.isBlank(option)) {
-					MenuUtils.printInvalidOption();
+				if (!MessageUtils.isBlank(option)) {
+					MessageUtils.printInvalidOption();
 					continue;
 				}
 				cm.excuteOperationChoosen();

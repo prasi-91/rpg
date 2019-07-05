@@ -16,28 +16,27 @@ public class RpgCharacterServiceImpl {
 	public RpgCharacter getRpgCharacterByName(String name) throws CharacterServiceException {
 		try {
 			return rpgCharacterDao.findByName(name);
-		} catch (ClassNotFoundException | SQLException e) {
-			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
-		}
-	}
-	
-	public RpgCharacter getRpgCharacterById(Long id) throws CharacterServiceException {
-		try {
-			return rpgCharacterDao.findById(id);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
 		}
 	}
 
+	public RpgCharacter getRpgCharacterById(Long id) throws CharacterServiceException {
+		try {
+			return rpgCharacterDao.findById(id);
+		} catch (SQLException e) {
+			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
+		}
+	}
 
 	public void createNewCharacter(RpgCharacter rpgChar) throws CharacterServiceException {
 		try {
 			rpgCharacterDao.save(rpgChar);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			if (e.getMessage().contains("column NAME is not unique")) {
 				throw new CharacterServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
 			} else {
-				throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
+				throw new CharacterServiceException(ExceptionMessages.ERROR_SAVING_CHARACTER);
 			}
 		}
 	}
@@ -45,7 +44,7 @@ public class RpgCharacterServiceImpl {
 	public void updateCharacter(RpgCharacter rpgCharacter) throws CharacterServiceException {
 		try {
 			rpgCharacterDao.update(rpgCharacter);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new CharacterServiceException(ExceptionMessages.ERROR_UPDATING_CHRACTER);
 		}
 	}
@@ -53,7 +52,7 @@ public class RpgCharacterServiceImpl {
 	public List<RpgCharacter> fetchAllRpgCharacters() throws CharacterServiceException {
 		try {
 			return rpgCharacterDao.findAll();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
 		}
 	}

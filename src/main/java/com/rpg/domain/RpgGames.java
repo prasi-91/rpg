@@ -1,6 +1,8 @@
 package com.rpg.domain;
 
-public class RpgGames {
+import java.io.Serializable;
+
+public class RpgGames implements Serializable{
 
 	private Long gameId;
 	private Long characterId;

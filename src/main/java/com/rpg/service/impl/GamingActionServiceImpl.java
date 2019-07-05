@@ -1,7 +1,9 @@
 package com.rpg.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.rpg.domain.RpgCharacter;
 import com.rpg.exception.CharacterServiceException;
@@ -42,6 +44,14 @@ public class GamingActionServiceImpl {
 	}
 
 	public RpgCharacter fight(RpgCharacter rpgChar) {
+		final int monsterGen = (int) (Math.random() * 10 + 1);
+		if (monsterGen == 0) {
+			System.out.println("You're fighting a: Wizard");
+		} else if (monsterGen == 2) {
+			System.out.println("You're fighting a: Dragon");
+		} else {
+			System.out.println("You're fighting a: Troll");
+		}
 		Integer earnedExperience = (int) (Math.random() * 10 + 1);
 		rpgChar.setExperience(earnedExperience);
 		return rpgChar;

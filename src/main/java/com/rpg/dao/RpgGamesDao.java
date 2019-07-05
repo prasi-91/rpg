@@ -8,15 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rpg.constants.RpgCharacterQueries;
 import com.rpg.constants.RpgGameQueries;
 import com.rpg.domain.RpgGames;
-import com.rpg.util.DBUtils;
+import com.rpg.util.DAOUtils;
 
 public class RpgGamesDao implements AbstractDAO<RpgGames> {
 
 	@Override
-	public List<RpgGames> findAll() throws ClassNotFoundException, SQLException {
+	public List<RpgGames> findAll() throws SQLException {
 		String query = RpgGameQueries.SELECT_ALL_GAMES_QUERY;
 
 		Connection con = null;
@@ -32,15 +31,15 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 				rpgGamesList.add(extractResultSet(rs));
 			}
 			return rpgGamesList;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(rs, con, stmt);
+			DAOUtils.closeAll(rs, con, stmt);
 		}
 	}
 
 	@Override
-	public RpgGames findByName(String name) throws ClassNotFoundException, SQLException {
+	public RpgGames findByName(String name) throws SQLException {
 		String query = RpgGameQueries.SELECT_GAME_QUERY_BY_NAME;
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -55,16 +54,16 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 			if (rs.next()) {
 				return extractResultSet(rs);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(rs, con, stmt);
+			DAOUtils.closeAll(rs, con, stmt);
 		}
 		return null;
 	}
 
 	@Override
-	public boolean save(RpgGames rpgGame) throws ClassNotFoundException, SQLException {
+	public boolean save(RpgGames rpgGame) throws SQLException {
 		String query = RpgGameQueries.INSERT_GAME_QUERY;
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -75,15 +74,15 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 			stmt.setLong(2, rpgGame.getCharacterId());
 			stmt.executeUpdate();
 			return true;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(null, con, stmt);
+			DAOUtils.closeAll(null, con, stmt);
 		}
 	}
 
 	@Override
-	public boolean update(RpgGames rpgGame) throws ClassNotFoundException, SQLException {
+	public boolean update(RpgGames rpgGame) throws SQLException {
 		String query = RpgGameQueries.UPDATE_GAME_QUERY;
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -94,15 +93,11 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 			stmt.setLong(2, rpgGame.getGameId());
 			stmt.executeUpdate();
 			return true;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(null, con, stmt);
+			DAOUtils.closeAll(null, con, stmt);
 		}
-	}
-
-	private Connection getConnection() throws ClassNotFoundException {
-		return ConnectionFactory.getConnection();
 	}
 
 	private RpgGames extractResultSet(ResultSet rs) throws SQLException {
@@ -115,7 +110,7 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	@Override
-	public RpgGames findById(Long id) throws ClassNotFoundException, SQLException {
+	public RpgGames findById(Long id) throws SQLException {
 		String query = RpgGameQueries.SELECT_GAME_QUERY_BY_ID;
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -130,12 +125,16 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 			if (rs.next()) {
 				return extractResultSet(rs);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(rs, con, stmt);
+			DAOUtils.closeAll(rs, con, stmt);
 		}
 		return null;
+	}
+
+	private Connection getConnection() throws SQLException {
+		return ConnectionFactory.getConnection();
 	}
 
 }

@@ -4,26 +4,28 @@ import java.util.Scanner;
 
 import com.rpg.constants.RpGameConstants;
 import com.rpg.game.menu.GameControl;
-import com.rpg.util.MenuUtils;
+import com.rpg.util.MessageUtils;
+import com.rpg.util.ScannerUtil;
 
 public class RpgApplication {
-
+	
 	private static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		MenuUtils.printWelcomeMessage();
+		MessageUtils.printWelcomeMessage();
 		boolean isExitPressed = false;
 		while (!isExitPressed) {
-			MenuUtils.printMainMenu();
-			String option = in.nextLine();
-			if (option.trim().isEmpty() || !MenuUtils.isValidOptionForMainMenu(option)) {
+			MessageUtils.printMainMenu();
+			String option = ScannerUtil.inputHandler.nextLine();
+			if (option.trim().isEmpty() || !MessageUtils.isValidOptionForMainMenu(option)) {
 				System.out.println("Please Enter a correct option");
 				continue;
 			}
 			if (RpGameConstants.EXIT_GAME.equals(option)) {
 				isExitPressed = true;
-				System.out.println("Bye for now!!!!");
+				MessageUtils.printExitMessage();
+				ScannerUtil.closeInputConnection();
 			} else {
 				GameControl gm = new GameControl();
 				gm.excuteOperationChoosen(option);

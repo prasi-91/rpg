@@ -10,12 +10,12 @@ import java.util.List;
 
 import com.rpg.constants.RpgCharacterQueries;
 import com.rpg.domain.RpgCharacter;
-import com.rpg.util.DBUtils;
+import com.rpg.util.DAOUtils;
 
 public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	@Override
-	public List<RpgCharacter> findAll() throws ClassNotFoundException, SQLException {
+	public List<RpgCharacter> findAll() throws SQLException {
 		String query = RpgCharacterQueries.SELECT_ALL_CHARACTERS_QUERY;
 		List<RpgCharacter> rpgCharacterList = new ArrayList<>();
 		Connection con = null;
@@ -29,7 +29,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 			while (rs.next()) {
 				rpgCharacterList.add(extractResultSet(rs));
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
 			stmt.close();
@@ -40,7 +40,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	@Override
-	public RpgCharacter findByName(String name) throws ClassNotFoundException, SQLException {
+	public RpgCharacter findByName(String name) throws SQLException {
 		String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_NAME;
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -54,17 +54,17 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 			if (rs.next()) {
 				return extractResultSet(rs);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(rs, con, stmt);
+			DAOUtils.closeAll(rs, con, stmt);
 		}
 		return null;
 
 	}
 
 	@Override
-	public boolean save(RpgCharacter rpgChar) throws ClassNotFoundException, SQLException {
+	public boolean save(RpgCharacter rpgChar) throws SQLException {
 		String query = RpgCharacterQueries.INSERT_CHARACTER_QUERY;
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -76,16 +76,16 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 			stmt.setString(3, rpgChar.getWeapon());
 			stmt.executeUpdate();
 			return true;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(null, con, stmt);
+			DAOUtils.closeAll(null, con, stmt);
 		}
 	}
 
 	@Override
-	public boolean update(RpgCharacter rpgChar) throws ClassNotFoundException, SQLException {
-		String query = RpgCharacterQueries.UPDATE_CHARACTER_QUERY;
+	public boolean update(RpgCharacter rpgChar) throws SQLException {
+		final String query = RpgCharacterQueries.UPDATE_CHARACTER_QUERY;
 		Connection con = null;
 		PreparedStatement stmt = null;
 
@@ -96,10 +96,10 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 			stmt.setString(2, rpgChar.getCharacterName());
 			stmt.executeUpdate();
 			return true;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(null, con, stmt);
+			DAOUtils.closeAll(null, con, stmt);
 		}
 
 	}
@@ -114,31 +114,31 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	}
 
-	private Connection getConnection() throws ClassNotFoundException {
-		return ConnectionFactory.getConnection();
-	}
-
 	@Override
-	public RpgCharacter findById(Long id) throws ClassNotFoundException, SQLException {
-		String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_ID;
+	public RpgCharacter findById(Long characterId) throws SQLException {
+		final String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_ID;
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
 			con = getConnection();
 			stmt = con.prepareStatement(query);
-			stmt.setLong(1, id);
+			stmt.setLong(1, characterId);
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
 				return extractResultSet(rs);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(rs, con, stmt);
+			DAOUtils.closeAll(rs, con, stmt);
 		}
 		return null;
+	}
+
+	private Connection getConnection() throws SQLException {
+		return ConnectionFactory.getConnection();
 	}
 
 }

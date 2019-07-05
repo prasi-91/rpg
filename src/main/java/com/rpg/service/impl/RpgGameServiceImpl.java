@@ -17,7 +17,7 @@ public class RpgGameServiceImpl {
 	public List<RpgGames> fetchAllGames() throws GameServiceException {
 		try {
 			return rpgGamesDao.findAll();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new GameServiceException(ExceptionMessages.ERROR_FETCHING_GAMES);
 		}
 	}
@@ -25,7 +25,7 @@ public class RpgGameServiceImpl {
 	public RpgGames findGame(String name) throws GameServiceException {
 		try {
 			return rpgGamesDao.findByName(name);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new GameServiceException(ExceptionMessages.ERROR_FINDING_GAME);
 		}
 	}
@@ -33,7 +33,7 @@ public class RpgGameServiceImpl {
 	public void createNewGame(RpgGames rpgGame) throws GameServiceException {
 		try {
 			rpgGamesDao.save(rpgGame);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
 		}
 	}
@@ -41,7 +41,7 @@ public class RpgGameServiceImpl {
 	public void updateGame(RpgGames rpgGame) throws GameServiceException {
 		try {
 			rpgGamesDao.update(rpgGame);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new GameServiceException(ExceptionMessages.ERROR_UPDATING_CHRACTER);
 		}
 	}

@@ -10,6 +10,7 @@ public class RpGameConstants {
 	public static final String ANSI_GREEN = "\u001B[32m";
 	public static final String ANSI_BLUE = "\u001B[34m";
 	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
 
 	public static final String NEW_CHARACTER = "1";
 	public static final String CREATE_NEW_GAME = "1";
@@ -24,4 +25,6 @@ public class RpGameConstants {
 	public static final String NEW_GAME = "1";
 	public static final String RESUME = "2";
 	public static final String GO_BACK = "3";
+	public static final String FILE_EXT = ".ser";
+	public static final String RELATIVE_FILE_PATH = "./characters/";
 }
