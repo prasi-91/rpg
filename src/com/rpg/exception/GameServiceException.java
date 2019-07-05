@@ -1,6 +1,6 @@
 package com.rpg.exception;
 
-public class GameServiceException extends RuntimeException {
+public class GameServiceException extends Exception {
 
   public GameServiceException(String message) {
     super(message);

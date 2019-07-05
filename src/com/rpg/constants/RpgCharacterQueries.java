@@ -2,8 +2,9 @@ package com.rpg.constants;
 
 public class RpgCharacterQueries {
 
-	public static final String SELECT_ALL_CHARACTERS = "Select id, name, experience, weapon from Character";
-	public static final String SELECT_A_CHARACTER = "Select id, name, experience, weapon from Character where name = ?";
-	public static final String INSERT_CHARACTER_QUERY = "Insert into Character values(NULL, ?,?,?)";
-	public static final String UPDATE_CHARACTER_QUERY = " Update Character set experience = ? where name = ?";
+	public static final String SELECT_ALL_CHARACTERS = "SELECT ID, NAME, EXPERIENCE, WEAPON FROM CHARACTER ";
+	public static final String SELECT_A_CHARACTER_BY_NAME = "SELECT ID, NAME, EXPERIENCE, WEAPON FROM CHARACTER WHERE NAME = ? ";
+	public static final String SELECT_A_CHARACTER_BY_ID = "SELECT ID, NAME, EXPERIENCE, WEAPON FROM CHARACTER WHERE ID = ? ";
+	public static final String INSERT_CHARACTER_QUERY = "INSERT INTO CHARACTER (NAME, EXPERIENCE, WEAPON) VALUES (?,?,?)";
+	public static final String UPDATE_CHARACTER_QUERY = " UPDATE CHARACTER SET EXPERIENCE = ? WHERE NAME = ? ";
 }

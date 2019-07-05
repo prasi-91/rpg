@@ -9,5 +9,6 @@ public class ExceptionMessages {
 	public static final String ERROR_FETCHING_CHARACTER = "Error in fetching Characters please try again later";
 	public static final String ERROR_SAVING_CHARACTER = "Error in saving character, please try again later ";
 	public static final String ERROR_UPDATING_CHRACTER = "Error in updating, please try again later";
+	public static final String UNIQUE_NAME_ERROR = "The Name already exists please give another name";
 
 }

@@ -7,7 +7,9 @@ public interface AbstractDAO<T> {
 
 	List<T> findAll() throws ClassNotFoundException,  SQLException;
 
-	T findOne(String name) throws ClassNotFoundException, SQLException;
+	T findByName(String name) throws ClassNotFoundException, SQLException;
+	
+	T findById(Long id) throws ClassNotFoundException, SQLException;
 
 	boolean save(T t) throws  ClassNotFoundException,  SQLException;
 

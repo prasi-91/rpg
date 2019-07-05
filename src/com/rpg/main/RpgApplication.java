@@ -3,8 +3,7 @@ package com.rpg.main;
 import java.util.Scanner;
 
 import com.rpg.constants.RpGameConstants;
-import com.rpg.game.menu.GameMenu;
-import com.rpg.game.menu.GameMenuFactory;
+import com.rpg.game.menu.GameControl;
 import com.rpg.util.MenuUtils;
 
 public class RpgApplication {
@@ -13,22 +12,23 @@ public class RpgApplication {
 
 	public static void main(String[] args) {
 
-		mainMenu: while (true) {
-
+		MenuUtils.printWelcomeMessage();
+		boolean isExitPressed = false;
+		while (!isExitPressed) {
 			MenuUtils.printMainMenu();
-
-			int option = in.nextInt();
-			if (option == RpGameConstants.EXIT_GAME) {
-				break mainMenu;
-			}
-			GameMenu gm = GameMenuFactory.getMenuOperation(option);
-			if (gm == null) {
-				MenuUtils.printInvalidOption();
+			String option = in.nextLine();
+			if (option.trim().isEmpty() || !MenuUtils.isValidOptionForMainMenu(option)) {
+				System.out.println("Please Enter a correct option");
 				continue;
-			} else {
-				gm.excuteOperationChoosen();
 			}
-
+			if (RpGameConstants.EXIT_GAME.equals(option)) {
+				isExitPressed = true;
+				System.out.println("Bye for now!!!!");
+			} else {
+				GameControl gm = new GameControl();
+				gm.excuteOperationChoosen(option);
+				isExitPressed = gm.isExitPressed();
+			}
 		}
 
 	}

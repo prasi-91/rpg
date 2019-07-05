@@ -22,11 +22,11 @@ public class RpgGameServiceImpl {
 		}
 	}
 
-	public RpgGames findAGame(String name) throws GameServiceException {
+	public RpgGames findGame(String name) throws GameServiceException {
 		try {
-			return rpgGamesDao.findOne(name);
+			return rpgGamesDao.findByName(name);
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new CharacterServiceException(ExceptionMessages.ERROR_FINDING_GAME);
+			throw new GameServiceException(ExceptionMessages.ERROR_FINDING_GAME);
 		}
 	}
 
@@ -34,17 +34,16 @@ public class RpgGameServiceImpl {
 		try {
 			rpgGamesDao.save(rpgGame);
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new CharacterServiceException(ExceptionMessages.ERROR_SAVING_GAME);
+			throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
 		}
 	}
-	
-	public void updateRpgCharacterExperience(RpgGames rpgGames) throws CharacterServiceException {
+
+	public void updateGame(RpgGames rpgGame) throws GameServiceException {
 		try {
-			rpgGamesDao.update(rpgGames);
+			rpgGamesDao.update(rpgGame);
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new CharacterServiceException(ExceptionMessages.ERROR_UPDATING_CHRACTER);
+			throw new GameServiceException(ExceptionMessages.ERROR_UPDATING_CHRACTER);
 		}
 	}
-	
-	
+
 }

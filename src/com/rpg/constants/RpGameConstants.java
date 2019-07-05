@@ -2,9 +2,7 @@ package com.rpg.constants;
 
 public class RpGameConstants {
 
-	public static final String URL = "jdbc:sqlite:SqliteJavaDB.db";
-	public static final String USER = "testuser";
-	public static final String PASS = "testpass";
+	public static final String URL = "jdbc:sqlite:C:/sqlLite/RPGame.db";
 	public static final String DRIVER = "org.sqlite.JDBC";
 
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -13,11 +11,17 @@ public class RpGameConstants {
 	public static final String ANSI_BLUE = "\u001B[34m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 
-	public static final int NEW_CHARACTER = 1;
-	public static final int LOAD_SAVED_GAMES = 2;
-	public static final int EXIT_GAME = 8;
-	public static final int EXPLORE_LEVELS = 3;
-	public static final int FIGHT = 2;
-	public static final int SAVE_GAME = 3;
-
+	public static final String NEW_CHARACTER = "1";
+	public static final String CREATE_NEW_GAME = "1";
+	public static final String RESUME_GAME = "2";
+	public static final String EXIT_GAME = "8";
+	public static final String EXPLORE_LEVELS = "2";
+	public static final String EXPLORE_CHARACTERS = "1";
+	public static final String FIGHT = "1";
+	public static final String SAVE_GAME = "2";
+	public static final String EXPLORE_MAIN_MENU = "2";
+	public static final String START_GAME_MAIN_MENU = "3";
+	public static final String NEW_GAME = "1";
+	public static final String RESUME = "2";
+	public static final String GO_BACK = "3";
 }

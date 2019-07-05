@@ -40,8 +40,8 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	@Override
-	public RpgCharacter findOne(String name) throws ClassNotFoundException, SQLException {
-		String query = RpgCharacterQueries.SELECT_A_CHARACTER;
+	public RpgCharacter findByName(String name) throws ClassNotFoundException, SQLException {
+		String query = RpgCharacterQueries.SELECT_A_CHARACTER_BY_NAME;
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -68,19 +68,18 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 		String query = RpgCharacterQueries.INSERT_CHARACTER_QUERY;
 		Connection con = null;
 		PreparedStatement stmt = null;
-		ResultSet rs = null;
 		try {
 			con = getConnection();
 			stmt = con.prepareStatement(query);
-			stmt.setString(1, rpgChar.getCharacterName());
+			stmt.setString(1, rpgChar.getCharacterName().toUpperCase());
 			stmt.setInt(2, rpgChar.getExperience());
 			stmt.setString(3, rpgChar.getWeapon());
-			rs = stmt.executeQuery(query);
+			stmt.executeUpdate();
 			return true;
 		} catch (ClassNotFoundException | SQLException e) {
 			throw e;
 		} finally {
-			DBUtils.closeAll(rs, con, stmt);
+			DBUtils.closeAll(null, con, stmt);
 		}
 	}
 
@@ -117,6 +116,29 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	private Connection getConnection() throws ClassNotFoundException {
 		return ConnectionFactory.getConnection();
+	}
+
+	@Override
+	public RpgCharacter findById(Long id) throws ClassNotFoundException, SQLException {
+		String query = RpgCharacterQueries.SELECT_A_CHARACTER_BY_ID;
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			stmt = con.prepareStatement(query);
+			stmt.setLong(1, id);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return extractResultSet(rs);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw e;
+		} finally {
+			DBUtils.closeAll(rs, con, stmt);
+		}
+		return null;
 	}
 
 }

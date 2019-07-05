@@ -13,19 +13,32 @@ public class RpgCharacterServiceImpl {
 
 	private AbstractDAO<RpgCharacter> rpgCharacterDao = DAOFactory.getDaoInstane("RpgCharacter");
 
-	public RpgCharacter getRpgCharacter(String name) throws CharacterServiceException {
+	public RpgCharacter getRpgCharacterByName(String name) throws CharacterServiceException {
 		try {
-			return rpgCharacterDao.findOne(name);
+			return rpgCharacterDao.findByName(name);
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
+		}
+	}
+	
+	public RpgCharacter getRpgCharacterById(Long id) throws CharacterServiceException {
+		try {
+			return rpgCharacterDao.findById(id);
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
 		}
 	}
 
+
 	public void createNewCharacter(RpgCharacter rpgChar) throws CharacterServiceException {
 		try {
 			rpgCharacterDao.save(rpgChar);
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new CharacterServiceException(ExceptionMessages.ERROR_SAVING_CHARACTER);
+			if (e.getMessage().contains("column NAME is not unique")) {
+				throw new CharacterServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
+			} else {
+				throw new CharacterServiceException(ExceptionMessages.ERROR_FETCHING_CHARACTER);
+			}
 		}
 	}
 

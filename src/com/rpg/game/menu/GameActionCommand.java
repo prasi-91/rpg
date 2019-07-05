@@ -10,8 +10,10 @@ import com.rpg.service.impl.RpgCharacterServiceImpl;
 import com.rpg.service.impl.RpgGameServiceImpl;
 import com.rpg.util.MenuUtils;
 
-public class GameActionMenu implements GameMenu {
+public class GameActionCommand implements Command {
 
+	private boolean isExitPressed = false;
+	boolean isGoBackPressed;
 	private static Scanner in = new Scanner(System.in);
 	private static RpgCharacterServiceImpl rpgCharacterService = new RpgCharacterServiceImpl();
 	private static GamingActionServiceImpl gameActionService = new GamingActionServiceImpl();
@@ -37,12 +39,20 @@ public class GameActionMenu implements GameMenu {
 	}
 
 	@Override
+	public boolean isExitPressed() {
+		return isExitPressed;
+	}
+
+	@Override
 	public void excuteOperationChoosen() {
-		Integer option = in.nextInt();
 
-		gameActionLoop: while (true) {
+		gameActionLoop : while (!isExitPressed) {
 			MenuUtils.printGameActionSubMenu();
-
+			String option = in.nextLine();
+			if (!MenuUtils.isBlank(option)) {
+				MenuUtils.printInvalidOption();
+				continue;
+			}
 			switch (option) {
 
 			case RpGameConstants.FIGHT:
@@ -57,29 +67,52 @@ public class GameActionMenu implements GameMenu {
 
 			case RpGameConstants.SAVE_GAME:
 				try {
-					System.out.println("Do You want to update the name of your game befor saving yes/No?");
-					String updateGameName = in.nextLine();
-					if ("yes".equalsIgnoreCase(updateGameName)) {
-						System.out.println("Enter the new Name");
-						rpgGames.setGameName(in.nextLine());
-						rpgGameService.updateRpgCharacterExperience(rpgGames);
+					String gameName = "";
+					if (rpgGames == null) {
+						rpgGames = new RpgGames();
+						System.out.println("Please Enter the name in which you want to save the game");
+						gameName = in.nextLine();
+						rpgGames.setGameName(gameName);
+						rpgGames.setCharacterId(character.getId());
+						rpgGameService.createNewGame(rpgGames);
+					} else {
+						System.out.println("Do You want to update the name of your game befor saving yes/No?");
+						String updateGameName = in.nextLine();
+						if ("yes".equalsIgnoreCase(updateGameName)) {
+							System.out.println("Enter the new Name");
+							gameName = in.nextLine();
+							rpgGames.setGameName(gameName);
+							rpgGameService.createNewGame(rpgGames);
+						}
 					}
+
 					System.out.println("Your Game is Saved");
 
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
 				break;
-			case 5:
-				continue;
-
 			case RpGameConstants.EXIT_GAME:
+				isExitPressed = true;
 				break;
+			case RpGameConstants.GO_BACK:
+				isGoBackPressed = true;
+				break gameActionLoop;
 			default:
 				MenuUtils.printInvalidOption();
-				break;
+				continue;
 			}
 		}
 
+	}
+
+	@Override
+	public String previousMenu() {
+		return "3";
+	}
+
+	@Override
+	public boolean isGoBackPressed() {
+		return isGoBackPressed;
 	}
 }

@@ -10,8 +10,9 @@ public class ConnectionFactory {
 
 	public static Connection getConnection() throws ClassNotFoundException {
 		try {
-			Class.forName("org.apache.derby.jdbc.ClientDriver");
-			return DriverManager.getConnection(RpGameConstants.URL, RpGameConstants.USER, RpGameConstants.PASS);
+
+			Class.forName("org.sqlite.JDBC");
+			return DriverManager.getConnection(RpGameConstants.URL);
 		} catch (SQLException ex) {
 			throw new RuntimeException("Error connecting to the database", ex);
 		}

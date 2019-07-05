@@ -40,8 +40,8 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	@Override
-	public RpgGames findOne(String name) throws ClassNotFoundException, SQLException {
-		String query = RpgGameQueries.SELECT_GAME_QUERY;
+	public RpgGames findByName(String name) throws ClassNotFoundException, SQLException {
+		String query = RpgGameQueries.SELECT_GAME_QUERY_BY_NAME;
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -91,7 +91,7 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 			con = getConnection();
 			stmt = con.prepareStatement(query);
 			stmt.setString(1, rpgGame.getGameName());
-			stmt.setString(2, rpgGame.getGameName());
+			stmt.setLong(2, rpgGame.getGameId());
 			stmt.executeUpdate();
 			return true;
 		} catch (ClassNotFoundException | SQLException e) {
@@ -109,9 +109,33 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 		RpgGames rpgGame = new RpgGames();
 		rpgGame.setGameId(rs.getLong("id"));
 		rpgGame.setCharacterId(rs.getLong("character_id"));
-		rpgGame.setGameName(rs.getString("character_id"));
+		rpgGame.setGameName(rs.getString("name"));
 		return rpgGame;
 
+	}
+
+	@Override
+	public RpgGames findById(Long id) throws ClassNotFoundException, SQLException {
+		String query = RpgGameQueries.SELECT_GAME_QUERY_BY_ID;
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = getConnection();
+			stmt = con.prepareStatement(query);
+			stmt.setLong(1, id);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return extractResultSet(rs);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw e;
+		} finally {
+			DBUtils.closeAll(rs, con, stmt);
+		}
+		return null;
 	}
 
 }
