@@ -8,8 +8,6 @@ import com.rpg.util.MessageUtils;
 import com.rpg.util.ScannerUtil;
 
 public class RpgApplication {
-	
-	private static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
 

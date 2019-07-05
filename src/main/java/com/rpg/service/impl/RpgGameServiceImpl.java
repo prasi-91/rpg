@@ -7,7 +7,6 @@ import com.rpg.constants.ExceptionMessages;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
 import com.rpg.domain.RpgGames;
-import com.rpg.exception.CharacterServiceException;
 import com.rpg.exception.GameServiceException;
 
 public class RpgGameServiceImpl {

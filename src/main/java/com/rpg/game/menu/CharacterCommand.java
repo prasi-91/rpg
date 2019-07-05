@@ -1,7 +1,5 @@
 package com.rpg.game.menu;
 
-import java.util.Scanner;
-
 import com.rpg.domain.RpgCharacter;
 import com.rpg.service.impl.RpgCharacterServiceImpl;
 import com.rpg.util.ScannerUtil;
