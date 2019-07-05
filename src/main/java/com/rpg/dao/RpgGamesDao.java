@@ -41,7 +41,7 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 				return extractResultSet(rs);
 			}
 		} finally {
-			rs.close();
+			DAOUtils.closeAll(rs);
 		}
 		return null;
 	}
@@ -58,7 +58,7 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 				return extractResultSet(rs);
 			}
 		} finally {
-			rs.close();
+			DAOUtils.closeAll(rs);
 		}
 		return null;
 	}
@@ -73,7 +73,7 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 			stmt.executeUpdate();
 			return true;
 		} finally {
-			rs.close();
+			DAOUtils.closeAll(rs);
 		}
 	}
 
