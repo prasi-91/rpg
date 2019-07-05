@@ -27,4 +27,8 @@ public class RpGameConstants {
 	public static final String GO_BACK = "3";
 	public static final String FILE_EXT = ".ser";
 	public static final String RELATIVE_FILE_PATH = "./characters/";
+
+	private RpGameConstants() {
+
+	}
 }

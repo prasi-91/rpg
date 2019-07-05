@@ -1,7 +1,5 @@
 package com.rpg.main;
 
-import java.util.Scanner;
-
 import com.rpg.constants.RpGameConstants;
 import com.rpg.game.menu.GameControl;
 import com.rpg.util.MessageUtils;

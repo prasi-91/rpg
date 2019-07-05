@@ -86,18 +86,12 @@ public class MessageUtils {
 	}
 
 	public static boolean isValidOptionForMainMenu(String option) {
-		if (RpGameConstants.NEW_CHARACTER.equals(option) || RpGameConstants.EXPLORE_MAIN_MENU.equals(option)
-				|| RpGameConstants.START_GAME_MAIN_MENU.equals(option) || RpGameConstants.EXIT_GAME.equals(option)) {
-			return true;
-		}
-		return false;
+		return (RpGameConstants.NEW_CHARACTER.equals(option) || RpGameConstants.EXPLORE_MAIN_MENU.equals(option)
+				|| RpGameConstants.START_GAME_MAIN_MENU.equals(option) || RpGameConstants.EXIT_GAME.equals(option));
 	}
 
 	public static boolean isBlank(String option) {
-		if (option == null || option.trim().isEmpty()) {
-			return false;
-		}
-		return true;
+		return (option == null || option.trim().isEmpty());
 	}
 
 	public static void printExitMessage() {

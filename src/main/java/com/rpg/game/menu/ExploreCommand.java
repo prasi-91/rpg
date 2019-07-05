@@ -66,12 +66,13 @@ public class ExploreCommand implements Command {
 		MessageUtils.printExploreLevelMenu();
 		String levelnum = ScannerUtil.inputHandler.nextLine();
 		Level level = LevelFactory.getLevel(Integer.parseInt(levelnum));
-		if (level == null) {
+		if (level != null) {
+			StringBuilder sb = new StringBuilder();
+			System.out.println(sb.append(level.getLevelEnvironment()).append(level.getLevelDifficulty())
+					.append(level.getEligibility()));
+		} else {
 			MessageUtils.printInvalidOption();
 		}
-		StringBuilder sb = new StringBuilder();
-		System.out.println(sb.append(level.getLevelEnvironment()).append(level.getLevelDifficulty())
-				.append(level.getEligibility()));
 	}
 
 	@Override

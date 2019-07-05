@@ -8,4 +8,8 @@ public class RpgGameQueries {
 	public static final String INSERT_GAME_QUERY = "INSERT INTO GAMES_PLAYED (NAME,CHARACTER_ID) VALUES (?,?)";
 	public static final String UPDATE_GAME_QUERY = " UPDATE GAMES_PLAYED SET NAME = ? WHERE ID = ? ";
 
+	private RpgGameQueries() {
+
+	}
+
 }
