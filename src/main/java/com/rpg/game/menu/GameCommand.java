@@ -28,7 +28,7 @@ public class GameCommand implements Command {
 		gameLoop: while (!isExitPressed) {
 			MessageUtils.printGameActionMainMenu();
 			String option = ScannerUtil.inputHandler.nextLine();
-			if (!MessageUtils.isBlank(option)) {
+			if (MessageUtils.isBlank(option)) {
 				MessageUtils.printInvalidOption();
 				continue;
 			}
