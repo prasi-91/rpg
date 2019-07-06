@@ -4,12 +4,12 @@ public class GroundLevel implements Level {
 
 	@Override
 	public String getLevelEnvironment() {
-		return "The battle ground for this Level is Ground. ";
+		return "The battle ground for this Level is Ground.";
 	}
 
 	@Override
 	public String getLevelDifficulty() {
-		return "Difficulty Level is low. ";
+		return "Difficulty Level is low";
 	}
 
 	@Override

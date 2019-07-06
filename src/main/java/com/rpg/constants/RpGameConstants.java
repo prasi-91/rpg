@@ -14,20 +14,16 @@ public class RpGameConstants {
 	public static final String ANSI_YELLOW = "\u001B[33m";
 
 	public static final String NEW_CHARACTER = "1";
-	public static final String CREATE_NEW_GAME = "1";
-	public static final String RESUME_GAME = "2";
-	public static final String EXIT_GAME = "8";
-	public static final String EXPLORE_LEVELS = "2";
-	public static final String EXPLORE_CHARACTERS = "1";
-	public static final String FIGHT = "1";
-	public static final String SAVE_GAME = "2";
 	public static final String EXPLORE_MAIN_MENU = "2";
 	public static final String START_GAME_MAIN_MENU = "3";
-	public static final String NEW_GAME = "1";
-	public static final String RESUME = "2";
-	public static final String GO_BACK = "3";
-	public static final String FILE_EXT = ".ser";
-	public static final String RELATIVE_FILE_PATH = "./characters/";
+	public static final String EXPLORE_CHARACTERS = "4";
+	public static final String EXPLORE_LEVELS = "5";
+	public static final String NEW_GAME = "6";
+	public static final String RESUME_GAME = "7";
+	public static final String FIGHT = "8";
+	public static final String RESAVE_GAME = "9";
+	public static final String GO_BACK = "10";
+	public static final String EXIT_GAME = "11";
 
 	private RpGameConstants() {
 

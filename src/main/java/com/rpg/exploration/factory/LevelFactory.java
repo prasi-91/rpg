@@ -2,15 +2,15 @@ package com.rpg.exploration.factory;
 
 public class LevelFactory {
 
-	public static Level getLevel(int level) {
+	public static Level getLevel(String levelName) {
 
-		switch (level) {
+		switch (levelName.toUpperCase()) {
 
-		case 1:
+		case "LEVEL 1":
 			return new GroundLevel();
-		case 2:
+		case "LEVEL 2":
 			return new MountainLevel();
-		case 3:
+		case "LEVEL 3":
 			return new IceLevel();
 		default:
 			return null;

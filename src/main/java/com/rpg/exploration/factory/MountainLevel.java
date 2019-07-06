@@ -10,7 +10,7 @@ public class MountainLevel implements Level {
 
 	@Override
 	public String getLevelDifficulty() {
-		return "Difficulty Level is Medium. ";
+		return "Difficulty Level is Medium";
 	}
 
 	@Override

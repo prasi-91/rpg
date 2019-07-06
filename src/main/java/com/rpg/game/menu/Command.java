@@ -2,11 +2,7 @@ package com.rpg.game.menu;
 
 public interface Command {
 
-	void excuteOperationChoosen();
-
-	boolean isExitPressed();
+	boolean excuteOperationChoosen();
 
 	String previousMenu();
-	
-	boolean isGoBackPressed();
 }

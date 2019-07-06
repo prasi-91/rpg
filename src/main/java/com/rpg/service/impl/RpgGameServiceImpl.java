@@ -7,6 +7,7 @@ import com.rpg.constants.ExceptionMessages;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
 import com.rpg.domain.RpgGames;
+import com.rpg.exception.CharacterServiceException;
 import com.rpg.exception.GameServiceException;
 
 public class RpgGameServiceImpl {
@@ -25,7 +26,11 @@ public class RpgGameServiceImpl {
 		try {
 			return rpgGamesDao.findByName(name);
 		} catch (SQLException e) {
-			throw new GameServiceException(ExceptionMessages.ERROR_FINDING_GAME);
+			if (e.getMessage().contains("column NAME is not unique")) {
+				throw new GameServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
+			} else {
+				throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
+			}
 		}
 	}
 

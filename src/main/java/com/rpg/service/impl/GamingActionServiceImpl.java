@@ -12,12 +12,16 @@ public class GamingActionServiceImpl {
 
 	private static RpgCharacterServiceImpl rpgCharacterService = new RpgCharacterServiceImpl();
 
-	public String exploreLevel(int levelNum) {
-		Level level = LevelFactory.getLevel(levelNum);
+	public String exploreLevel(String levelName) {
+		Level level = LevelFactory.getLevel(levelName);
+		if (level == null) {
+			return "Invalid level choosen";
+		}
 		StringBuilder strBuil = new StringBuilder();
 		strBuil.append(level.getLevelEnvironment());
-		strBuil.append(" and ");
 		strBuil.append(level.getLevelDifficulty());
+		strBuil.append(" and ");
+		strBuil.append(level.getEligibility());
 		return strBuil.toString();
 	}
 
@@ -41,18 +45,23 @@ public class GamingActionServiceImpl {
 		return characterList;
 	}
 
-	public RpgCharacter fight(RpgCharacter rpgChar) {
-		final int monsterGen = (int) (Math.random() * 10 + 1);
-		if (monsterGen == 0) {
-			System.out.println("You're fighting a: Wizard");
-		} else if (monsterGen == 2) {
-			System.out.println("You're fighting a: Dragon");
-		} else {
-			System.out.println("You're fighting a: Troll");
+	public void fight(RpgCharacter rpgChar) {
+		try {
+			final int monsterGen = (int) (Math.random() * 10 + 1);
+			if (monsterGen == 0) {
+				System.out.println("You're fighting a: Wizard");
+			} else if (monsterGen == 2) {
+				System.out.println("You're fighting a: Dragon");
+			} else {
+				System.out.println("You're fighting a: Troll");
+			}
+			Integer earnedExperience = (int) (Math.random() * 10 + 1);
+			rpgChar.setExperience(earnedExperience);
+			rpgCharacterService.updateCharacter(rpgChar);
+			System.out.println("Your Character has gained experience");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		Integer earnedExperience = (int) (Math.random() * 10 + 1);
-		rpgChar.setExperience(earnedExperience);
-		return rpgChar;
 	}
 
 }
