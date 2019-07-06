@@ -1,6 +1,6 @@
 package com.rpg.constants;
 
-public class RpgCharacterQueries {
+public class CharacterSqlQueries {
 
 	public static final String SELECT_ALL_CHARACTERS_QUERY = "SELECT ID, NAME, EXPERIENCE, WEAPON FROM CHARACTER ";
 	public static final String SELECT_CHARACTER_QUERY_BY_NAME = "SELECT ID, NAME, EXPERIENCE, WEAPON FROM CHARACTER WHERE NAME = ?  COLLATE NOCASE";
@@ -8,7 +8,7 @@ public class RpgCharacterQueries {
 	public static final String INSERT_CHARACTER_QUERY = "INSERT INTO CHARACTER (NAME, EXPERIENCE, WEAPON) VALUES (?,?,?)";
 	public static final String UPDATE_CHARACTER_QUERY = " UPDATE CHARACTER SET EXPERIENCE = ? WHERE NAME = ? ";
 
-	private RpgCharacterQueries() {
+	private CharacterSqlQueries() {
 
 	}
 }

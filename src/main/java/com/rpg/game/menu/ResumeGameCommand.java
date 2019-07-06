@@ -2,35 +2,35 @@ package com.rpg.game.menu;
 
 import java.util.List;
 
-import com.rpg.domain.RpgCharacter;
-import com.rpg.domain.RpgGames;
+import com.rpg.entities.Character;
+import com.rpg.entities.Game;
 import com.rpg.exception.GameServiceException;
-import com.rpg.service.impl.GamingActionServiceImpl;
-import com.rpg.service.impl.RpgCharacterServiceImpl;
-import com.rpg.service.impl.RpgGameServiceImpl;
+import com.rpg.service.impl.GameActionServiceImpl;
+import com.rpg.service.impl.CharacterServiceImpl;
+import com.rpg.service.impl.GameServiceImpl;
 import com.rpg.util.ScannerUtil;
 
 public class ResumeGameCommand implements Command {
 
-	private static RpgGameServiceImpl rpgGameService = new RpgGameServiceImpl();
-	private static GamingActionServiceImpl gameActionService = new GamingActionServiceImpl();
-	private static RpgCharacterServiceImpl rpgCharacter = new RpgCharacterServiceImpl();
+	private static GameServiceImpl rpgGameService = new GameServiceImpl();
+	private static GameActionServiceImpl gameActionService = new GameActionServiceImpl();
+	private static CharacterServiceImpl rpgCharacter = new CharacterServiceImpl();
 
 	@Override
 	public boolean excuteOperationChoosen() {
 		try {
-			List<RpgGames> gameList = rpgGameService.fetchAllGames();
+			List<Game> gameList = rpgGameService.fetchAllGames();
 			if (gameList != null && !gameList.isEmpty()) {
 				System.out.println("Select the game name to resume");
 				gameList.forEach(item -> System.out.println(item.getGameName()));
 
-				RpgGames rpGame = validateGameName();
+				Game rpGame = validateGameName();
 
 				printSubMenu();
 
 				String action = validateSubActionMenu();
 				if ("1".equals(action)) {
-					RpgCharacter rpgChar = rpgCharacter.getRpgCharacterById(rpGame.getCharacterId());
+					Character rpgChar = rpgCharacter.getRpgCharacterById(rpGame.getCharacterId());
 					gameActionService.fight(rpgChar);
 				} else if ("2".equals(action)) {
 					System.out.println("Do You want to update the name of your game befor saving yes/No?");
@@ -66,9 +66,9 @@ public class ResumeGameCommand implements Command {
 		return action;
 	}
 
-	private RpgGames validateGameName() throws GameServiceException {
+	private Game validateGameName() throws GameServiceException {
 		String gameName = ScannerUtil.inputHandler.nextLine();
-		RpgGames rpGame = rpgGameService.findGame(gameName);
+		Game rpGame = rpgGameService.findGame(gameName);
 		while (rpGame == null) {
 			System.out.println("Please Enter Valid Game Name From the options displayed");
 			gameName = ScannerUtil.inputHandler.nextLine();

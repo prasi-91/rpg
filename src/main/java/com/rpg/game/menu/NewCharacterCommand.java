@@ -1,12 +1,12 @@
 package com.rpg.game.menu;
 
-import com.rpg.domain.RpgCharacter;
-import com.rpg.service.impl.RpgCharacterServiceImpl;
+import com.rpg.entities.Character;
+import com.rpg.service.impl.CharacterServiceImpl;
 import com.rpg.util.ScannerUtil;
 
-public class CharacterCommand implements Command {
+public class NewCharacterCommand implements Command {
 
-	private static RpgCharacterServiceImpl rpgCharacterService = new RpgCharacterServiceImpl();
+	private static CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
 
 	@Override
 	public boolean excuteOperationChoosen() {
@@ -19,7 +19,7 @@ public class CharacterCommand implements Command {
 		System.out.println("Enter your weapon");
 		String weapon = ScannerUtil.inputHandler.nextLine();
 		try {
-			RpgCharacter rpgCharacter = new RpgCharacter(characterName, weapon, 0);
+			Character rpgCharacter = new Character(characterName, weapon, 0);
 			rpgCharacterService.createNewCharacter(rpgCharacter);
 			System.out.println("Hurray You Have Created Your Own Character");
 			System.out.println(" ");

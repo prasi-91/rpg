@@ -6,15 +6,15 @@ import java.util.List;
 import com.rpg.constants.ExceptionMessages;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
-import com.rpg.domain.RpgGames;
+import com.rpg.entities.Game;
 import com.rpg.exception.CharacterServiceException;
 import com.rpg.exception.GameServiceException;
 
-public class RpgGameServiceImpl {
+public class GameServiceImpl {
 
-	private AbstractDAO<RpgGames> rpgGamesDao = DAOFactory.getDaoInstane("RpgGames");
+	private AbstractDAO<Game> rpgGamesDao = DAOFactory.getDaoInstane("Game");
 
-	public List<RpgGames> fetchAllGames() throws GameServiceException {
+	public List<Game> fetchAllGames() throws GameServiceException {
 		try {
 			return rpgGamesDao.findAll();
 		} catch (SQLException e) {
@@ -22,7 +22,7 @@ public class RpgGameServiceImpl {
 		}
 	}
 
-	public RpgGames findGame(String name) throws GameServiceException {
+	public Game findGame(String name) throws GameServiceException {
 		try {
 			return rpgGamesDao.findByName(name);
 		} catch (SQLException e) {
@@ -34,7 +34,7 @@ public class RpgGameServiceImpl {
 		}
 	}
 
-	public void createNewGame(RpgGames rpgGame) throws GameServiceException {
+	public void createNewGame(Game rpgGame) throws GameServiceException {
 		try {
 			rpgGamesDao.save(rpgGame);
 		} catch (SQLException e) {
@@ -42,7 +42,7 @@ public class RpgGameServiceImpl {
 		}
 	}
 
-	public void updateGame(RpgGames rpgGame) throws GameServiceException {
+	public void updateGame(Game rpgGame) throws GameServiceException {
 		try {
 			rpgGamesDao.update(rpgGame);
 		} catch (SQLException e) {

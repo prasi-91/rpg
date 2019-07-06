@@ -8,16 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rpg.constants.RpgCharacterQueries;
-import com.rpg.domain.RpgCharacter;
+import com.rpg.constants.CharacterSqlQueries;
+import com.rpg.entities.Character;
 import com.rpg.util.DAOUtils;
 
-public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
+public class CharacterDao implements AbstractDAO<Character> {
 
 	@Override
-	public List<RpgCharacter> findAll() throws SQLException {
-		String query = RpgCharacterQueries.SELECT_ALL_CHARACTERS_QUERY;
-		List<RpgCharacter> rpgCharacterList = new ArrayList<>();
+	public List<Character> findAll() throws SQLException {
+		String query = CharacterSqlQueries.SELECT_ALL_CHARACTERS_QUERY;
+		List<Character> rpgCharacterList = new ArrayList<>();
 		try (Connection con = getConnection();
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(query);) {
@@ -30,8 +30,8 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	@Override
-	public RpgCharacter findByName(String name) throws SQLException {
-		String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_NAME;
+	public Character findByName(String name) throws SQLException {
+		String query = CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_NAME;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setString(1, name);
@@ -47,8 +47,8 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	@Override
-	public RpgCharacter findById(Long characterId) throws SQLException {
-		String query = RpgCharacterQueries.SELECT_CHARACTER_QUERY_BY_ID;
+	public Character findById(Long characterId) throws SQLException {
+		String query = CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_ID;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setLong(1, characterId);
@@ -64,8 +64,8 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	@Override
-	public boolean save(RpgCharacter rpgChar) throws SQLException {
-		String query = RpgCharacterQueries.INSERT_CHARACTER_QUERY;
+	public boolean save(Character rpgChar) throws SQLException {
+		String query = CharacterSqlQueries.INSERT_CHARACTER_QUERY;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setString(1, rpgChar.getCharacterName().toUpperCase());
 			stmt.setInt(2, rpgChar.getExperience());
@@ -76,8 +76,8 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	@Override
-	public boolean update(RpgCharacter rpgChar) throws SQLException {
-		final String query = RpgCharacterQueries.UPDATE_CHARACTER_QUERY;
+	public boolean update(Character rpgChar) throws SQLException {
+		final String query = CharacterSqlQueries.UPDATE_CHARACTER_QUERY;
 
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setInt(1, rpgChar.getExperience());
@@ -88,8 +88,8 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 
 	}
 
-	private RpgCharacter extractResultSet(ResultSet rs) throws SQLException {
-		RpgCharacter rpgChar = new RpgCharacter();
+	private Character extractResultSet(ResultSet rs) throws SQLException {
+		Character rpgChar = new Character();
 		rpgChar.setId(rs.getLong("id"));
 		rpgChar.setCharacterName(rs.getString("name"));
 		rpgChar.setExperience(rs.getInt("experience"));
@@ -99,7 +99,7 @@ public class RpgCharacterDao implements AbstractDAO<RpgCharacter> {
 	}
 
 	private Connection getConnection() throws SQLException {
-		return ConnectionFactory.getConnection();
+		return DBConnection.getConnection();
 	}
 
 }

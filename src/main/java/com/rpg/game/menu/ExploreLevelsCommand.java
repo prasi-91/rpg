@@ -1,12 +1,12 @@
 package com.rpg.game.menu;
 
-import com.rpg.service.impl.GamingActionServiceImpl;
+import com.rpg.service.impl.GameActionServiceImpl;
 import com.rpg.util.MessageUtils;
 import com.rpg.util.ScannerUtil;
 
 public class ExploreLevelsCommand implements Command {
 
-	private static GamingActionServiceImpl gameActionService = new GamingActionServiceImpl();
+	private static GameActionServiceImpl gameActionService = new GameActionServiceImpl();
 
 	@Override
 	public boolean excuteOperationChoosen() {

@@ -3,7 +3,7 @@ package com.rpg.main;
 import com.rpg.game.menu.GameControl;
 import com.rpg.util.MessageUtils;
 
-public class RpgApplication {
+public class RpgMainApplication {
 
 	public static void main(String[] args) {
 

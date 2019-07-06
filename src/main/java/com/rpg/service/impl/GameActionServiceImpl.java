@@ -3,14 +3,14 @@ package com.rpg.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rpg.domain.RpgCharacter;
+import com.rpg.entities.Character;
 import com.rpg.exception.CharacterServiceException;
 import com.rpg.exploration.factory.Level;
 import com.rpg.exploration.factory.LevelFactory;
 
-public class GamingActionServiceImpl {
+public class GameActionServiceImpl {
 
-	private static RpgCharacterServiceImpl rpgCharacterService = new RpgCharacterServiceImpl();
+	private static CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
 
 	public String exploreLevel(String levelName) {
 		Level level = LevelFactory.getLevel(levelName);
@@ -45,7 +45,7 @@ public class GamingActionServiceImpl {
 		return characterList;
 	}
 
-	public void fight(RpgCharacter rpgChar) {
+	public void fight(Character rpgChar) {
 		try {
 			final int monsterGen = (int) (Math.random() * 10 + 1);
 			if (monsterGen == 0) {

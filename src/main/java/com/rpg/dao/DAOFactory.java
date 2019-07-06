@@ -4,10 +4,10 @@ public class DAOFactory {
 
 	public static <T> AbstractDAO getDaoInstane(String daoName) {
 		switch (daoName) {
-		case "RpgCharacter":
-			return new RpgCharacterDao();
-		case "RpgGames":
-			return new RpgGamesDao();
+		case "Character":
+			return new CharacterDao();
+		case "Game":
+			return new GameDao();
 		default:
 			return null;
 		}

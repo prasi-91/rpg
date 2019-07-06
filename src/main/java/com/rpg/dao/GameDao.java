@@ -8,16 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rpg.constants.RpgGameQueries;
-import com.rpg.domain.RpgGames;
+import com.rpg.constants.GameSqlQueries;
+import com.rpg.entities.Game;
 import com.rpg.util.DAOUtils;
 
-public class RpgGamesDao implements AbstractDAO<RpgGames> {
+public class GameDao implements AbstractDAO<Game> {
 
 	@Override
-	public List<RpgGames> findAll() throws SQLException {
-		String query = RpgGameQueries.SELECT_ALL_GAMES_QUERY;
-		List<RpgGames> rpgGamesList = new ArrayList<>();
+	public List<Game> findAll() throws SQLException {
+		String query = GameSqlQueries.SELECT_ALL_GAMES_QUERY;
+		List<Game> rpgGamesList = new ArrayList<>();
 		try (Connection con = getConnection();
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(query);) {
@@ -30,8 +30,8 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	@Override
-	public RpgGames findByName(String name) throws SQLException {
-		String query = RpgGameQueries.SELECT_GAME_QUERY_BY_NAME;
+	public Game findByName(String name) throws SQLException {
+		String query = GameSqlQueries.SELECT_GAME_QUERY_BY_NAME;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setString(1, name);
@@ -47,8 +47,8 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	@Override
-	public RpgGames findById(Long id) throws SQLException {
-		String query = RpgGameQueries.SELECT_GAME_QUERY_BY_ID;
+	public Game findById(Long id) throws SQLException {
+		String query = GameSqlQueries.SELECT_GAME_QUERY_BY_ID;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setLong(1, id);
@@ -64,8 +64,8 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	@Override
-	public boolean save(RpgGames rpgGame) throws SQLException {
-		String query = RpgGameQueries.INSERT_GAME_QUERY;
+	public boolean save(Game rpgGame) throws SQLException {
+		String query = GameSqlQueries.INSERT_GAME_QUERY;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setString(1, rpgGame.getGameName());
@@ -78,8 +78,8 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	@Override
-	public boolean update(RpgGames rpgGame) throws SQLException {
-		String query = RpgGameQueries.UPDATE_GAME_QUERY;
+	public boolean update(Game rpgGame) throws SQLException {
+		String query = GameSqlQueries.UPDATE_GAME_QUERY;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
 			stmt.setString(1, rpgGame.getGameName());
 			stmt.setLong(2, rpgGame.getGameId());
@@ -89,11 +89,11 @@ public class RpgGamesDao implements AbstractDAO<RpgGames> {
 	}
 
 	private Connection getConnection() throws SQLException {
-		return ConnectionFactory.getConnection();
+		return DBConnection.getConnection();
 	}
 
-	private RpgGames extractResultSet(ResultSet rs) throws SQLException {
-		RpgGames rpgGame = new RpgGames();
+	private Game extractResultSet(ResultSet rs) throws SQLException {
+		Game rpgGame = new Game();
 		rpgGame.setGameId(rs.getLong("id"));
 		rpgGame.setCharacterId(rs.getLong("character_id"));
 		rpgGame.setGameName(rs.getString("name"));

@@ -6,14 +6,14 @@ import java.util.List;
 import com.rpg.constants.ExceptionMessages;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
-import com.rpg.domain.RpgCharacter;
+import com.rpg.entities.Character;
 import com.rpg.exception.CharacterServiceException;
 
-public class RpgCharacterServiceImpl {
+public class CharacterServiceImpl {
 
-	private AbstractDAO<RpgCharacter> rpgCharacterDao = DAOFactory.getDaoInstane("RpgCharacter");
+	private AbstractDAO<Character> rpgCharacterDao = DAOFactory.getDaoInstane("Character");
 
-	public RpgCharacter getRpgCharacterByName(String name) throws CharacterServiceException {
+	public Character getRpgCharacterByName(String name) throws CharacterServiceException {
 		try {
 			return rpgCharacterDao.findByName(name);
 		} catch (SQLException e) {
@@ -21,7 +21,7 @@ public class RpgCharacterServiceImpl {
 		}
 	}
 
-	public RpgCharacter getRpgCharacterById(Long id) throws CharacterServiceException {
+	public Character getRpgCharacterById(Long id) throws CharacterServiceException {
 		try {
 			return rpgCharacterDao.findById(id);
 		} catch (SQLException e) {
@@ -29,7 +29,7 @@ public class RpgCharacterServiceImpl {
 		}
 	}
 
-	public void createNewCharacter(RpgCharacter rpgChar) throws CharacterServiceException {
+	public void createNewCharacter(Character rpgChar) throws CharacterServiceException {
 		try {
 			rpgCharacterDao.save(rpgChar);
 		} catch (SQLException e) {
@@ -41,7 +41,7 @@ public class RpgCharacterServiceImpl {
 		}
 	}
 
-	public void updateCharacter(RpgCharacter rpgCharacter) throws CharacterServiceException {
+	public void updateCharacter(Character rpgCharacter) throws CharacterServiceException {
 		try {
 			rpgCharacterDao.update(rpgCharacter);
 		} catch (SQLException e) {
@@ -49,7 +49,7 @@ public class RpgCharacterServiceImpl {
 		}
 	}
 
-	public List<RpgCharacter> fetchAllRpgCharacters() throws CharacterServiceException {
+	public List<Character> fetchAllRpgCharacters() throws CharacterServiceException {
 		try {
 			return rpgCharacterDao.findAll();
 		} catch (SQLException e) {

@@ -1,15 +1,11 @@
 package com.rpg.game.menu;
 
 import java.util.List;
-
-import com.rpg.domain.RpgCharacter;
-import com.rpg.service.impl.GamingActionServiceImpl;
-import com.rpg.service.impl.RpgCharacterServiceImpl;
-import com.rpg.util.ScannerUtil;
+import com.rpg.service.impl.GameActionServiceImpl;
 
 public class ExploreCharacterCommand implements Command {
 
-	private static GamingActionServiceImpl gamingActionService = new GamingActionServiceImpl();
+	private static GameActionServiceImpl gamingActionService = new GameActionServiceImpl();
 
 	@Override
 	public boolean excuteOperationChoosen() {
@@ -18,9 +14,7 @@ public class ExploreCharacterCommand implements Command {
 		System.out.println("============================================");
 		try {
 			List<String> characterList = gamingActionService.exploreCharacters();
-			characterList.forEach(item -> {
-				System.out.println(item);
-			});
+			characterList.forEach(item -> System.out.println(item));
 			System.out.println(" ");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

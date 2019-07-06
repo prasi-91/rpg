@@ -1,6 +1,6 @@
-package com.rpg.domain;
+package com.rpg.entities;
 
-public class RpgGames {
+public class Game {
 
 	private Long gameId;
 	private Long characterId;

@@ -1,6 +1,6 @@
-package com.rpg.domain;
+package com.rpg.entities;
 
-public class RpgCharacter {
+public class Character {
 
 	private Long id;
 	private String characterName;
@@ -39,13 +39,13 @@ public class RpgCharacter {
 		this.experience = experience;
 	}
 
-	public RpgCharacter(String characterName, String weapon, int experience) {
+	public Character(String characterName, String weapon, int experience) {
 		this.characterName = characterName;
 		this.weapon = weapon;
 		this.experience = experience;
 	}
 
-	public RpgCharacter() {
+	public Character() {
 
 	}
 

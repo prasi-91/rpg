@@ -1,6 +1,6 @@
 package com.rpg.constants;
 
-public class RpGameConstants {
+public class GameConstants {
 
 	public static final String URL_PREFIX = "jdbc:sqlite:";
 	public static final String URL_SUFFIX = "//RPGames.db";
@@ -25,7 +25,10 @@ public class RpGameConstants {
 	public static final String GO_BACK = "10";
 	public static final String EXIT_GAME = "11";
 
-	private RpGameConstants() {
+	public static final String EXIT_MENU_MESSAGE = "11 Exit Game ";
+	public static final String GO_BACK_MENU_MESSAGE = "10 Go Back";
+
+	private GameConstants() {
 
 	}
 }

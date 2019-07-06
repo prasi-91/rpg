@@ -5,11 +5,11 @@ import java.sql.SQLException;
 
 import org.sqlite.SQLiteDataSource;
 
-import com.rpg.constants.RpGameConstants;
+import com.rpg.constants.GameConstants;
 
-public class ConnectionFactory {
+public class DBConnection {
 
-	public static final String URL = RpGameConstants.URL_PREFIX + System.getProperty("user.dir") + RpGameConstants.URL_SUFFIX;
+	public static final String URL = GameConstants.URL_PREFIX + System.getProperty("user.dir") + GameConstants.URL_SUFFIX;
 
 	public static Connection getConnection() throws SQLException {
 		SQLiteDataSource ds = new SQLiteDataSource();
