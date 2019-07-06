@@ -11,4 +11,8 @@ public class ExceptionMessages {
 	public static final String ERROR_UPDATING_CHRACTER = "Error in updating, please try again later";
 	public static final String UNIQUE_NAME_ERROR = "The Name already exists please give another name";
 
+	private ExceptionMessages() {
+
+	}
+
 }

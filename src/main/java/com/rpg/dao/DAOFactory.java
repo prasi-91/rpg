@@ -2,7 +2,7 @@ package com.rpg.dao;
 
 public class DAOFactory {
 
-	public static <T> AbstractDAO getDaoInstane(String daoName) {
+	public static AbstractDAO getDaoInstane(String daoName) {
 		switch (daoName) {
 		case "Character":
 			return new CharacterDao();

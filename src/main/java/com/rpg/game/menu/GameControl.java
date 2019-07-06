@@ -20,7 +20,6 @@ public class GameControl {
 			String option = ScannerUtil.inputHandler.nextLine();
 			if (!MenuValidationUtil.validateInputForOption(previousOption, option)) {
 				MessageUtils.printInvalidOption();
-				continue;
 			} else if (GameConstants.EXIT_GAME.equals(option)) {
 				MessageUtils.printExitMessage();
 				break gameloop;
@@ -29,11 +28,9 @@ public class GameControl {
 					MessageUtils.selectPrintableMenus(goBackMenuMap.get(previousOption));
 					previousOption = goBackMenuMap.get(previousOption);
 				}
-				continue;
 			} else if (printableMenuList.contains(option)) {
 				MessageUtils.selectPrintableMenus(option);
 				previousOption = option;
-				continue;
 			} else {
 				Command cm = CommandFactory.getCommandInstance(option);
 				if (cm == null) {
