@@ -97,14 +97,14 @@ public class GameDaoTest {
 		assertNotNull(game);
 	}
 
-	@Test
+	/*@Test
 	public void testSaveChar() throws SQLException {
 		Game game = new Game();
 		game.setGameName("test");
 		game.setCharacterId(1);
 		assertTrue(gameDao.save(game));
 
-	}
+	}*/
 
 	@Test
 	public void testUpdate() throws SQLException {
