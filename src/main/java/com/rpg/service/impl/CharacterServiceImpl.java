@@ -31,13 +31,12 @@ public class CharacterServiceImpl {
 
 	public void createNewCharacter(Character rpgChar) throws CharacterServiceException {
 		try {
+			if (rpgCharacterDao.findByName(rpgChar.getCharacterName()) != null) {
+				throw new CharacterServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
+			}
 			rpgCharacterDao.save(rpgChar);
 		} catch (SQLException e) {
-			if (e.getMessage().contains("column NAME is not unique")) {
-				throw new CharacterServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
-			} else {
-				throw new CharacterServiceException(ExceptionMessages.ERROR_SAVING_CHARACTER);
-			}
+			throw new CharacterServiceException(ExceptionMessages.ERROR_SAVING_CHARACTER);
 		}
 	}
 

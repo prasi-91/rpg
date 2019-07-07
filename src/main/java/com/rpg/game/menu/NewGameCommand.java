@@ -19,7 +19,7 @@ public class NewGameCommand implements Command {
 		try {
 			rpgCharacterService.fetchAllRpgCharacters().forEach(item -> System.out.println(item.getCharacterName()));
 			String characterName = in.getInput();
-			Character rpgChar = verifyAndGetCharacter(characterName);
+			Character rpgChar = verifyAndGetCharacter(characterName.trim());
 			System.out.println("Select the game Name you want to save");
 			String gameName = in.getInput();
 			Game rpGame = new Game();

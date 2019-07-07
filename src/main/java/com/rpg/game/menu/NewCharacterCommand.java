@@ -21,7 +21,7 @@ public class NewCharacterCommand implements Command {
 		System.out.println("Enter your weapon");
 		String weapon = in.getInput();
 		try {
-			Character rpgCharacter = new Character(characterName, weapon, 0);
+			Character rpgCharacter = new Character(characterName.trim(), weapon, 0);
 			rpgCharacterService.createNewCharacter(rpgCharacter);
 			System.out.println("Hurray You Have Created Your Own Character");
 			System.out.println(" ");

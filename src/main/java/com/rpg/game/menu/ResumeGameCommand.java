@@ -38,7 +38,7 @@ public class ResumeGameCommand implements Command {
 					String updateGameName = in.getInput();
 					if ("yes".equalsIgnoreCase(updateGameName)) {
 						String gameName = validateIsBlank();
-						rpGame.setGameName(gameName);
+						rpGame.setGameName(gameName.trim());
 						rpgGameService.updateGame(rpGame);
 						System.out.println("Your Game has been saved");
 					}
