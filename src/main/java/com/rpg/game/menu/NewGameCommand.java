@@ -55,7 +55,6 @@ public class NewGameCommand implements Command {
 			System.out.println("Please enter a valid Name");
 			characterName = in.getInput();
 		}
-		Character rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
-		return rpgChar;
+		return rpgCharacterService.getRpgCharacterByName(characterName);
 	}
 }

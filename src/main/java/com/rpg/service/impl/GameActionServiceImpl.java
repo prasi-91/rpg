@@ -8,6 +8,7 @@ package com.rpg.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.rpg.entities.Character;
 import com.rpg.exception.CharacterServiceException;
@@ -53,7 +54,8 @@ public class GameActionServiceImpl {
 
 	public void fight(Character rpgChar) {
 		try {
-			final int monsterGen = (int) (Math.random() * 10 + 1);
+			Random ran = new Random();
+			final int monsterGen = (int) (ran.nextInt() * 10 + 1);
 			if (monsterGen == 0) {
 				System.out.println("You're fighting a: Wizard");
 			} else if (monsterGen == 2) {

@@ -22,7 +22,7 @@ public class ExploreCharacterCommand implements Command {
 				System.out.println(" ");
 				System.out.println("The game has following amazing characters");
 				System.out.println("============================================");
-				characterList.forEach(item -> System.out.println(item));
+				characterList.forEach(System.out::println);
 				System.out.println(" ");
 			} else {
 				System.out.println("There are no characters created till now, please create one from the main men");

@@ -24,10 +24,6 @@ public class MenuValidationUtil {
 				|| GameConstants.GO_BACK.equals(option) || GameConstants.EXIT_GAME.equals(option));
 	}
 
-	private static boolean isBlank(String option) {
-		return (option == null || option.trim().isEmpty());
-	}
-
 	public static List<String> nonActionMenuList() {
 		List<String> nonActionMenuList = new ArrayList<>();
 		nonActionMenuList.add("0"); // Main Menu
