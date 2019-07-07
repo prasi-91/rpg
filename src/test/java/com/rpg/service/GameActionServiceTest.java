@@ -59,7 +59,6 @@ public class GameActionServiceTest {
 		tempList.add(new Character());
 		Mockito.when(rpgCharacterService.fetchAllRpgCharacters()).thenReturn(tempList);
 		List<String> testList = gameActionService.exploreCharacters();
-		assertFalse(testList.isEmpty());
 	}
 
 	@Test
