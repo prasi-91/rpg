@@ -1,3 +1,10 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * The Class contains all the SQL Queries made to the Table GAMES_PLAYED
+ * 
+ */
+
 package com.rpg.constants;
 
 public class GameSqlQueries {

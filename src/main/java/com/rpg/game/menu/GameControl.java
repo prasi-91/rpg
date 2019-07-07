@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class acts as a router for all the operations of the game 
+ * 
+ */
 package com.rpg.game.menu;
 
 import java.util.List;

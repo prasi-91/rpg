@@ -1,3 +1,10 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * This Interface acts as a blue print for all the DB methods used
+ * 
+ */
+
 package com.rpg.dao;
 
 import java.sql.SQLException;

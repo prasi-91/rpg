@@ -1,3 +1,10 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * The Class contains all the constant Strings used in the application
+ * 
+ */
+
 package com.rpg.constants;
 
 public class GameConstants {

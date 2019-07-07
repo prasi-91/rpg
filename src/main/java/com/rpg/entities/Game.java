@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * The Character Pojo Modeled as Entity for GAME Table
+ * 
+ */
 package com.rpg.entities;
 
 public class Game {

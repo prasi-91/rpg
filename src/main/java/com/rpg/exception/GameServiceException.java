@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Exception Class for Game Service Exceptions
+ * 
+ */
 package com.rpg.exception;
 
 public class GameServiceException extends Exception {

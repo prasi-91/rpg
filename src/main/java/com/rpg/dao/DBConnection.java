@@ -1,3 +1,10 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to return Connection Object to the DB
+ * 
+ */
+
 package com.rpg.dao;
 
 import java.sql.Connection;

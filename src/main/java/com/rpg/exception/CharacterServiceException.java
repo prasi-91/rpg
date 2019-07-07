@@ -1,3 +1,10 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Exception Class for Character Service Exceptions
+ * 
+ */
+
 package com.rpg.exception;
 
 public class CharacterServiceException extends Exception {

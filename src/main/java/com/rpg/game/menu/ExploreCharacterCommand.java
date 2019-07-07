@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to execute the explore Character operation
+ * 
+ */
 package com.rpg.game.menu;
 
 import java.util.List;

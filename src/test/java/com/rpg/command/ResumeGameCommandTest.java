@@ -17,7 +17,7 @@ import com.rpg.entities.Character;
 import com.rpg.entities.Game;
 import com.rpg.exception.CharacterServiceException;
 import com.rpg.exception.GameServiceException;
-import com.rpg.game.menu.ResumeGameCommand;
+import com.rpg.game.menu.PlayGameCommand;
 import com.rpg.service.impl.CharacterServiceImpl;
 import com.rpg.service.impl.GameServiceImpl;
 import com.rpg.util.ScannerUtil;
@@ -34,7 +34,7 @@ public class ResumeGameCommandTest {
 	CharacterServiceImpl charService;
 
 	@InjectMocks
-	ResumeGameCommand resumeGameCommand;
+	PlayGameCommand resumeGameCommand;
 
 	@Before
 	public void setup() {

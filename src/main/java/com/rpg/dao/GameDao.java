@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * The class is concrete implementation for GAMES_PLAYED Table operations
+ * 
+ */
 package com.rpg.dao;
 
 import java.sql.Connection;

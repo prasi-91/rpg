@@ -1,3 +1,10 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to execute the create new Character operation
+ * 
+ */
+
 package com.rpg.game.menu;
 
 import com.rpg.entities.Character;

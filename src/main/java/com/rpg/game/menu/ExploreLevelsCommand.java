@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to execute the explore level operation
+ * 
+ */
 package com.rpg.game.menu;
 
 import com.rpg.service.impl.GameActionServiceImpl;

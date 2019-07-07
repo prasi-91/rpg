@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to carry out Service operations for Save and Create Game
+ * 
+ */
 package com.rpg.service.impl;
 
 import java.sql.SQLException;
@@ -7,7 +13,6 @@ import com.rpg.constants.ExceptionMessages;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
 import com.rpg.entities.Game;
-import com.rpg.exception.CharacterServiceException;
 import com.rpg.exception.GameServiceException;
 
 public class GameServiceImpl {

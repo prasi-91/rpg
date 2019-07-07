@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * The class is concrete implementation for GAMES_PLAYED DB operations
+ * 
+ */
 package com.rpg.dao;
 
 public class DAOFactory {

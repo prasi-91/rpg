@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to carry out Service operations for character
+ * 
+ */
 package com.rpg.service.impl;
 
 import java.sql.SQLException;

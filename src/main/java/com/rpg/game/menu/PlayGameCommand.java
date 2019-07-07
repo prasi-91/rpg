@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * Class to execute the play operation
+ * 
+ */
 package com.rpg.game.menu;
 
 import java.util.List;
@@ -11,7 +17,7 @@ import com.rpg.service.impl.GameServiceImpl;
 import com.rpg.util.MessageUtils;
 import com.rpg.util.ScannerUtil;
 
-public class ResumeGameCommand implements Command {
+public class PlayGameCommand implements Command {
 
 	private GameServiceImpl rpgGameService = new GameServiceImpl();
 	private GameActionServiceImpl gameActionService = new GameActionServiceImpl();

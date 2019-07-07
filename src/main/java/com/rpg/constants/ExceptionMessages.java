@@ -1,3 +1,9 @@
+/*
+ * Author M S Prasita Nair
+ * 
+ * The Class contains all the Exception Messages to be thrown
+ * 
+ */
 package com.rpg.constants;
 
 public class ExceptionMessages {
@@ -10,9 +16,5 @@ public class ExceptionMessages {
 	public static final String ERROR_SAVING_CHARACTER = "Error in saving character, please try again later ";
 	public static final String ERROR_UPDATING_CHRACTER = "Error in updating, please try again later";
 	public static final String UNIQUE_NAME_ERROR = "The Name already exists please give another name";
-
-	private ExceptionMessages() {
-
-	}
 
 }
