@@ -8,6 +8,7 @@ import com.rpg.exception.GameServiceException;
 import com.rpg.service.impl.GameActionServiceImpl;
 import com.rpg.service.impl.CharacterServiceImpl;
 import com.rpg.service.impl.GameServiceImpl;
+import com.rpg.util.MessageUtils;
 import com.rpg.util.ScannerUtil;
 
 public class ResumeGameCommand implements Command {
@@ -27,7 +28,7 @@ public class ResumeGameCommand implements Command {
 
 				Game rpGame = validateGameName();
 
-				printSubMenu();
+				MessageUtils.printGameActionSubMenu();
 
 				String action = validateSubActionMenu();
 				if ("1".equals(action)) {
@@ -87,12 +88,6 @@ public class ResumeGameCommand implements Command {
 		}
 
 		return gameName;
-	}
-
-	private void printSubMenu() {
-		System.out.println("Select The option you want to perform");
-		System.out.println("1 Fight");
-		System.out.println("2 Save Game");
 	}
 
 	private String validUpdateGameOption() {

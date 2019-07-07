@@ -10,7 +10,7 @@ import com.rpg.exploration.factory.LevelFactory;
 
 public class GameActionServiceImpl {
 
-	private static CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
+	private CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
 
 	public String exploreLevel(String levelName) {
 		Level level = LevelFactory.getLevel(levelName);

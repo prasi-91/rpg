@@ -50,7 +50,7 @@ public class CharacterDao implements AbstractDAO<Character> {
 		ResultSet rs = null;
 		try (Connection con = getConnection();
 				PreparedStatement stmt = con.prepareStatement(CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_ID);) {
-			stmt.setLong(1, characterId);
+			stmt.setInt(1, characterId);
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {

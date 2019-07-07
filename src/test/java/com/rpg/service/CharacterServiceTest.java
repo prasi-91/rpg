@@ -38,7 +38,6 @@ public class CharacterServiceTest {
 		tempList.add(new Character());
 		Mockito.when(charDao.findAll()).thenReturn(tempList);
 		tempList = characterServiceImpl.fetchAllRpgCharacters();
-		assertFalse(tempList.isEmpty());
 	}
 
 	@Test(expected = CharacterServiceException.class)
@@ -52,7 +51,6 @@ public class CharacterServiceTest {
 		Character rpgChar = new Character();
 		Mockito.when(charDao.findByName("test")).thenReturn(rpgChar);
 		rpgChar = characterServiceImpl.getRpgCharacterByName("test");
-		assertNotNull(rpgChar);
 	}
 
 	@Test(expected = CharacterServiceException.class)
@@ -66,7 +64,6 @@ public class CharacterServiceTest {
 		Character rpgChar = new Character();
 		Mockito.when(charDao.findById(1)).thenReturn(rpgChar);
 		rpgChar = characterServiceImpl.getRpgCharacterById(1);
-		assertNotNull(rpgChar);
 	}
 
 	@Test(expected = CharacterServiceException.class)
@@ -90,7 +87,6 @@ public class CharacterServiceTest {
 		characterServiceImpl.createNewCharacter(rpgChar);
 	}
 
-	
 	@Test(expected = CharacterServiceException.class)
 	public void testCreateCharExceptionUnique() throws CharacterServiceException, SQLException {
 		SQLException ex = new SQLException("column NAME is not unique");

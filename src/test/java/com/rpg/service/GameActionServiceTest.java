@@ -1,8 +1,5 @@
 package com.rpg.service;
 
-import static org.junit.Assert.assertFalse;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Matchers.any;
-
 
 import com.rpg.dao.CharacterDao;
 import com.rpg.entities.Character;
@@ -24,17 +19,15 @@ import com.rpg.service.impl.GameActionServiceImpl;
 
 public class GameActionServiceTest {
 
-	@Mock
-	CharacterDao charDao;
-
-	@Mock
+	@InjectMocks
 	private GameActionServiceImpl gameActionService;
 	
-	@InjectMocks
+	@Mock
 	private CharacterServiceImpl rpgCharacterService;
 
-	@InjectMocks
+	@Mock
 	private LevelFactory levelFactory;
+	
 
 	@Before
 	public void setUp() throws Exception {

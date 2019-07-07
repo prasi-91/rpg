@@ -50,7 +50,7 @@ public class GameDao implements AbstractDAO<Game> {
 		ResultSet rs = null;
 		try (Connection con = getConnection();
 				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.SELECT_GAME_QUERY_BY_ID);) {
-			stmt.setLong(1, id);
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
@@ -68,7 +68,7 @@ public class GameDao implements AbstractDAO<Game> {
 		try (Connection con = getConnection();
 				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.INSERT_GAME_QUERY);) {
 			stmt.setString(1, rpgGame.getGameName());
-			stmt.setLong(2, rpgGame.getCharacterId());
+			stmt.setInt(2, rpgGame.getCharacterId());
 			stmt.executeUpdate();
 			return true;
 		} finally {
@@ -81,7 +81,7 @@ public class GameDao implements AbstractDAO<Game> {
 		try (Connection con = getConnection();
 				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.UPDATE_GAME_QUERY);) {
 			stmt.setString(1, rpgGame.getGameName());
-			stmt.setLong(2, rpgGame.getGameId());
+			stmt.setInt(2, rpgGame.getGameId());
 			stmt.executeUpdate();
 			return true;
 		}

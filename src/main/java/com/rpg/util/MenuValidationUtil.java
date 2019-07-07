@@ -57,5 +57,4 @@ public class MenuValidationUtil {
 		}
 		return false;
 	}
-	
 }

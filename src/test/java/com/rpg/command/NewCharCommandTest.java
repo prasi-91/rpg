@@ -1,7 +1,5 @@
 package com.rpg.command;
 
-import java.sql.SQLException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

@@ -2,7 +2,6 @@ package com.rpg.game.menu;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import com.rpg.constants.GameConstants;
 import com.rpg.util.MenuValidationUtil;

@@ -21,19 +21,23 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import org.sqlite.SQLiteDataSource;
 
 import com.rpg.entities.Game;
 import com.rpg.entities.Game;
 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(DBConnection.class)
 public class GameDaoTest {
 
 	@Mock
-	private DBConnection dbConnect;
+	DBConnection dbconnect;
 
 	@Mock
-	private Connection mockConn;
+	Connection mockConn;
 
 	@Mock
 	PreparedStatement mockPreparedStmnt;
@@ -59,21 +63,21 @@ public class GameDaoTest {
 	}
 
 	@Before
-	public void setUp() throws SQLException {
+	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		Game game = new Game();
 		game.setGameId(1);
 		game.setGameName("test");
 		game.setCharacterId(1);
-		Mockito.when(sqlLiteDs.getConnection()).thenReturn(mockConn);
+		PowerMockito.mockStatic(DBConnection.class);
+		PowerMockito.doReturn(mockConn).when(DBConnection.class, "getConnection");
 		Mockito.when(mockConn.createStatement()).thenReturn(stmnt);
-		Mockito.when(mockConn.prepareStatement("test")).thenReturn(mockPreparedStmnt);
+		Mockito.when(mockConn.prepareStatement(anyString())).thenReturn(mockPreparedStmnt);
 		Mockito.when(mockPreparedStmnt.executeQuery()).thenReturn(mockResultSet);
-		Mockito.when(mockPreparedStmnt.executeUpdate("test")).thenReturn(1);
+		Mockito.when(mockPreparedStmnt.executeUpdate(anyString())).thenReturn(1);
 		Mockito.when(mockPreparedStmnt.executeUpdate()).thenReturn(1);
 		Mockito.when(stmnt.executeQuery(anyString())).thenReturn(mockResultSet);
 		Mockito.when(mockResultSet.first()).thenReturn(true);
-		Mockito.when(mockResultSet.next()).thenReturn(true);
 		Mockito.when(mockResultSet.getInt(anyString())).thenReturn(1);
 		Mockito.when(mockResultSet.getString(anyString())).thenReturn(game.getGameName());
 		Mockito.when(mockResultSet.getInt(anyString())).thenReturn(0);
@@ -81,37 +85,34 @@ public class GameDaoTest {
 
 	@Test
 	public void testFindAll() throws Exception {
-		List<Game> testList = gameDao.findAll();
-		assertNotNull(testList);
+		gameDao.findAll();
 	}
 
 	@Test
 	public void testFindByName() throws SQLException {
-		Game game = gameDao.findByName("test");
-		assertNotNull(game);
+		gameDao.findByName("test");
 	}
 
 	@Test
 	public void testFindById() throws SQLException {
-		Game game = gameDao.findById(1);
-		assertNotNull(game);
+		gameDao.findById(1);
 	}
 
-	/*@Test
+	@Test
 	public void testSaveChar() throws SQLException {
 		Game game = new Game();
 		game.setGameName("test");
 		game.setCharacterId(1);
-		assertTrue(gameDao.save(game));
+		gameDao.save(game);
 
-	}*/
+	}
 
 	@Test
 	public void testUpdate() throws SQLException {
 		Game game = new Game();
 		game.setGameId(1);
-		game.setGameName("test_junit");
+		game.setGameName("test");
 		game.setCharacterId(1);
-		assertNotNull(gameDao.update(game));
+		gameDao.update(game);
 	}
 }

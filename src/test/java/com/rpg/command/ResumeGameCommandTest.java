@@ -1,5 +1,7 @@
 package com.rpg.command;
 
+import static org.mockito.Matchers.anyString;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,29 +11,30 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 import com.rpg.entities.Character;
 import com.rpg.entities.Game;
 import com.rpg.exception.CharacterServiceException;
 import com.rpg.exception.GameServiceException;
-import com.rpg.game.menu.NewGameCommand;
+import com.rpg.game.menu.ResumeGameCommand;
 import com.rpg.service.impl.CharacterServiceImpl;
 import com.rpg.service.impl.GameServiceImpl;
 import com.rpg.util.ScannerUtil;
 
-public class NewGameCommandTest {
+public class ResumeGameCommandTest {
 
 	@Mock
 	ScannerUtil scUtil;
 
-	@InjectMocks
-	NewGameCommand newGameCommand;
-
-	@Mock
+	@Spy
 	GameServiceImpl gameService;
-
+	
 	@Mock
 	CharacterServiceImpl charService;
+
+	@InjectMocks
+	ResumeGameCommand resumeGameCommand;
 
 	@Before
 	public void setup() {
@@ -39,17 +42,14 @@ public class NewGameCommandTest {
 	}
 
 	@Test
-	public void testNewGame() throws CharacterServiceException, GameServiceException {
-		Mockito.when(scUtil.getInput()).thenReturn("test");
-		List<Character> rpgCharList = new ArrayList<>();
-		Character rpgChar = new Character();
-		rpgChar.setId(1);
+	public void testNewGame() throws GameServiceException, CharacterServiceException {
+		Mockito.when(scUtil.getInput()).thenReturn("1");
+		List<Game> rpGameList = new ArrayList<>();
 		Game rpGame = new Game();
-		Mockito.when(scUtil.getInput()).thenReturn("test");
-		Mockito.when(charService.fetchAllRpgCharacters()).thenReturn(rpgCharList);
-		Mockito.when(charService.getRpgCharacterByName("test")).thenReturn(rpgChar);
-		Mockito.doNothing().when(gameService).createNewGame(rpGame);
-		newGameCommand.excuteOperationChoosen();
+		Mockito.when(gameService.findGame(anyString())).thenReturn(rpGame);
+		Mockito.when(gameService.fetchAllGames()).thenReturn(rpGameList);
+		Mockito.when(charService.getRpgCharacterById(1)).thenReturn(new Character());
+		resumeGameCommand.excuteOperationChoosen();	
 	}
 
 }

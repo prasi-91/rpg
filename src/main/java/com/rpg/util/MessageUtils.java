@@ -53,14 +53,9 @@ public class MessageUtils {
 	}
 
 	public static void printGameActionSubMenu() {
-		System.out.println(" ");
-		System.out.println(GameConstants.ANSI_BLUE + "\n" + "Select the option number you would like to do"
-				+ GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "8 Fight" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "9 Save game" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_CYAN + GameConstants.GO_BACK_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(" ");
+		System.out.println(GameConstants.ANSI_BLUE  + "\n" + "Select The option you want to perform" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_YELLOW + "1 Fight" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_GREEN + "2 Save Game" +  GameConstants.ANSI_RESET);
 	}
 
 	public static void printWelcomeMessage() {
@@ -94,5 +89,4 @@ public class MessageUtils {
 			printGameActionMainMenu();
 		}
 	}
-
 }

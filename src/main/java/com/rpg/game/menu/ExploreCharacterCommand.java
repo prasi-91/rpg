@@ -5,17 +5,22 @@ import com.rpg.service.impl.GameActionServiceImpl;
 
 public class ExploreCharacterCommand implements Command {
 
-	private static GameActionServiceImpl gamingActionService = new GameActionServiceImpl();
+	private GameActionServiceImpl gamingActionService = new GameActionServiceImpl();
 
 	@Override
 	public boolean excuteOperationChoosen() {
-		System.out.println(" ");
-		System.out.println("The game has following amazing characters");
-		System.out.println("============================================");
+
 		try {
 			List<String> characterList = gamingActionService.exploreCharacters();
-			characterList.forEach(item -> System.out.println(item));
-			System.out.println(" ");
+			if (characterList != null && !characterList.isEmpty()) {
+				System.out.println(" ");
+				System.out.println("The game has following amazing characters");
+				System.out.println("============================================");
+				characterList.forEach(item -> System.out.println(item));
+				System.out.println(" ");
+			} else {
+				System.out.println("There are no characters created till now, please create one from the main men");
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;
