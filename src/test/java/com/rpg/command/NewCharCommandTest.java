@@ -1,5 +1,7 @@
 package com.rpg.command;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -34,6 +36,7 @@ public class NewCharCommandTest {
 		Mockito.when(scUtil.getInput()).thenReturn("test");
 		Character rpgChar = new Character();
 		Mockito.doNothing().when(charService).createNewCharacter(rpgChar);
-		newCharCommand.excuteOperationChoosen();
+		boolean isSuccessFull = newCharCommand.excuteOperationChoosen();
+		assertTrue(isSuccessFull);
 	}
 }

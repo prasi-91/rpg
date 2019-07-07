@@ -1,5 +1,7 @@
 package com.rpg.command;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +51,8 @@ public class NewGameCommandTest {
 		Mockito.when(charService.fetchAllRpgCharacters()).thenReturn(rpgCharList);
 		Mockito.when(charService.getRpgCharacterByName("test")).thenReturn(rpgChar);
 		Mockito.doNothing().when(gameService).createNewGame(rpGame);
-		newGameCommand.excuteOperationChoosen();
+		boolean isSuccessFull = newGameCommand.excuteOperationChoosen();
+		assertTrue(isSuccessFull);
 	}
 
 }

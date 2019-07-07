@@ -1,6 +1,6 @@
 package com.rpg.dao;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyString;
 
 import java.sql.Connection;
@@ -93,7 +93,8 @@ public class CharacterDaoTest {
 		character.setCharacterName("test");
 		character.setWeapon("test");
 		character.setExperience(0);
-		charDao.save(character);
+		boolean isSuccesFull = charDao.save(character);
+		assertTrue(isSuccesFull);
 	}
 
 	@Test

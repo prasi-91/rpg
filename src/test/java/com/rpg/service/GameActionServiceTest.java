@@ -1,5 +1,7 @@
 package com.rpg.service;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,7 @@ public class GameActionServiceTest {
 		tempList.add(new Character());
 		Mockito.when(rpgCharacterService.fetchAllRpgCharacters()).thenReturn(tempList);
 		List<String> testList = gameActionService.exploreCharacters();
+		assertNotNull(testList);
 	}
 
 	@Test

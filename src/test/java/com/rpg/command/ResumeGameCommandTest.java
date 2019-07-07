@@ -1,5 +1,6 @@
 package com.rpg.command;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyString;
 
 import java.util.ArrayList;
@@ -49,7 +50,8 @@ public class ResumeGameCommandTest {
 		Mockito.when(gameService.findGame(anyString())).thenReturn(rpGame);
 		Mockito.when(gameService.fetchAllGames()).thenReturn(rpGameList);
 		Mockito.when(charService.getRpgCharacterById(1)).thenReturn(new Character());
-		resumeGameCommand.excuteOperationChoosen();	
+		boolean isSucessFull = resumeGameCommand.excuteOperationChoosen();	
+		assertTrue(isSucessFull);
 	}
 
 }

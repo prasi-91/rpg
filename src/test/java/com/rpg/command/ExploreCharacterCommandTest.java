@@ -1,5 +1,7 @@
 package com.rpg.command;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class ExploreCharacterCommandTest {
 
 	@Mock
 	GameActionServiceImpl gameService;
-	
+
 	@InjectMocks
 	ExploreCharacterCommand exploreCharCommand;
 
@@ -32,17 +34,18 @@ public class ExploreCharacterCommandTest {
 		List<String> testList = new ArrayList<>();
 		testList.add("test");
 		Mockito.when(gameService.exploreCharacters()).thenReturn(testList);
-		exploreCharCommand.excuteOperationChoosen();
+		boolean isSuccessFull = exploreCharCommand.excuteOperationChoosen();
+		assertTrue(isSuccessFull);
 	}
-	
+
 	@Test
 	public void testExploreCharactersEmptyList() throws CharacterServiceException {
 		List<String> testList = new ArrayList<>();
 		Mockito.when(gameService.exploreCharacters()).thenReturn(testList);
-		exploreCharCommand.excuteOperationChoosen();
+		boolean isSuccessFull = exploreCharCommand.excuteOperationChoosen();
+		assertTrue(isSuccessFull);
 	}
 
-	
 	@Test
 	public void testExploreCharactersException() throws CharacterServiceException {
 		Mockito.when(gameService.exploreCharacters()).thenThrow(CharacterServiceException.class);

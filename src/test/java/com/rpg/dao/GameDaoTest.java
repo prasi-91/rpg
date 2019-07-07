@@ -1,16 +1,16 @@
 package com.rpg.dao;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.anyString;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -20,13 +20,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.sqlite.SQLiteDataSource;
 
-import com.rpg.entities.Game;
 import com.rpg.entities.Game;
 
 @RunWith(PowerMockRunner.class)
@@ -85,7 +83,8 @@ public class GameDaoTest {
 
 	@Test
 	public void testFindAll() throws Exception {
-		gameDao.findAll();
+		List<Game> testList = gameDao.findAll();
+		assertNotNull(testList);
 	}
 
 	@Test
@@ -103,7 +102,8 @@ public class GameDaoTest {
 		Game game = new Game();
 		game.setGameName("test");
 		game.setCharacterId(1);
-		gameDao.save(game);
+		boolean isSuccessFull = gameDao.save(game);
+		assertTrue(isSuccessFull);
 
 	}
 
@@ -113,6 +113,7 @@ public class GameDaoTest {
 		game.setGameId(1);
 		game.setGameName("test");
 		game.setCharacterId(1);
-		gameDao.update(game);
+		boolean isSuccessFull = gameDao.update(game);
+		assertTrue(isSuccessFull);
 	}
 }
