@@ -45,8 +45,8 @@ public class MessageUtils {
 	private static void printGameActionMainMenu() {
 		System.out.println(" ");
 		System.out.println(GameConstants.ANSI_BLUE + "\n" + "Select an option" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "6 Create and save a new games" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "7 Resume saved games" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_YELLOW + "6 Create and save" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_GREEN + "7 Play/Resume" + GameConstants.ANSI_RESET);
 		System.out.println(GameConstants.ANSI_CYAN + GameConstants.GO_BACK_MENU_MESSAGE + GameConstants.ANSI_RESET);
 		System.out.println(GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET);
 		System.out.println(" ");
