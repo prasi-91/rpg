@@ -10,7 +10,7 @@ public class IceLevel implements Level {
 
 	@Override
 	public String getLevelDifficulty() {
-		return "Difficulty Level is High";
+		return " Difficulty Level is High";
 	}
 
 	@Override

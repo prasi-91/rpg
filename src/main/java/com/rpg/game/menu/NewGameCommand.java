@@ -20,6 +20,9 @@ public class NewGameCommand implements Command {
 			rpgCharacterService.fetchAllRpgCharacters().forEach(item -> System.out.println(item.getCharacterName()));
 			String characterName = in.getInput();
 			Character rpgChar = verifyAndGetCharacter(characterName.trim());
+			if(rpgChar == null) {
+				return false;
+			}
 			System.out.println("Select the game Name you want to save");
 			String gameName = in.getInput();
 			Game rpGame = new Game();
@@ -46,11 +49,8 @@ public class NewGameCommand implements Command {
 			characterName = in.getInput();
 		}
 		Character rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
-		while (rpgChar == null) {
-			rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
-			System.out.println("Please enter a valid Name");
-			characterName = in.getInput();
-		}
+		rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
+		System.out.println("This Character is not created");
 		return rpgChar;
 	}
 }

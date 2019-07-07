@@ -9,7 +9,7 @@ public class GroundLevel implements Level {
 
 	@Override
 	public String getLevelDifficulty() {
-		return "Difficulty Level is low";
+		return " Difficulty Level is low";
 	}
 
 	@Override
