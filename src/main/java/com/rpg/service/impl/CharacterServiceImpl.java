@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.rpg.constants.ExceptionMessages;
+import com.rpg.constants.GameConstants;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
 import com.rpg.entities.Character;
@@ -17,7 +18,7 @@ import com.rpg.exception.CharacterServiceException;
 
 public class CharacterServiceImpl {
 
-	private AbstractDAO<Character> rpgCharacterDao = DAOFactory.getDaoInstane("Character");
+	private AbstractDAO<Character> rpgCharacterDao = DAOFactory.getDaoInstane(GameConstants.CHARACTER_DAO);
 
 	public Character getRpgCharacterByName(String name) throws CharacterServiceException {
 		try {

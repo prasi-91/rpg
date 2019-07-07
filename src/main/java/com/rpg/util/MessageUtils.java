@@ -36,9 +36,9 @@ public class MessageUtils {
 		System.out.println(" ");
 		System.out.println(
 				GameConstants.ANSI_BLUE + "Select the level number you would like explore:" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "Level 1" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "Level 2" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_CYAN + "Level 3" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_YELLOW + "1" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_GREEN + "2" + GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_CYAN + "3" + GameConstants.ANSI_RESET);
 		System.out.println(" ");
 	}
 

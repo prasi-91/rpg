@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.rpg.constants.ExceptionMessages;
+import com.rpg.constants.GameConstants;
 import com.rpg.dao.AbstractDAO;
 import com.rpg.dao.DAOFactory;
 import com.rpg.entities.Game;
@@ -17,7 +18,7 @@ import com.rpg.exception.GameServiceException;
 
 public class GameServiceImpl {
 
-	private AbstractDAO<Game> rpgGamesDao = DAOFactory.getDaoInstane("Game");
+	private AbstractDAO<Game> rpgGamesDao = DAOFactory.getDaoInstane(GameConstants.GAME_DAO);
 
 	public List<Game> fetchAllGames() throws GameServiceException {
 		try {

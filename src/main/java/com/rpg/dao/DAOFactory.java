@@ -6,13 +6,15 @@
  */
 package com.rpg.dao;
 
+import com.rpg.constants.GameConstants;
+
 public class DAOFactory {
 
 	public static AbstractDAO getDaoInstane(String daoName) {
 		switch (daoName) {
-		case "Character":
+		case GameConstants.CHARACTER_DAO:
 			return new CharacterDao();
-		case "Game":
+		case GameConstants.GAME_DAO:
 			return new GameDao();
 		default:
 			return null;

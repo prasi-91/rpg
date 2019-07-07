@@ -34,6 +34,9 @@ public class GameConstants {
 
 	public static final String EXIT_MENU_MESSAGE = "11 Exit Game ";
 	public static final String GO_BACK_MENU_MESSAGE = "10 Go Back";
+	public static final String GAME_DAO = "Game";
+	public static final String CHARACTER_DAO = "Character";
+	
 
 	private GameConstants() {
 
