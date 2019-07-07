@@ -21,6 +21,7 @@ public class NewGameCommand implements Command {
 			String characterName = in.getInput();
 			Character rpgChar = verifyAndGetCharacter(characterName.trim());
 			if(rpgChar == null) {
+				System.out.println("This Character is not created");
 				return false;
 			}
 			System.out.println("Select the game Name you want to save");
@@ -49,8 +50,6 @@ public class NewGameCommand implements Command {
 			characterName = in.getInput();
 		}
 		Character rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
-		rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
-		System.out.println("This Character is not created");
 		return rpgChar;
 	}
 }
