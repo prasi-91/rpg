@@ -25,7 +25,7 @@ public class ExploreCharacterCommand implements Command {
 				characterList.forEach(System.out::println);
 				System.out.println(" ");
 			} else {
-				System.out.println("There are no characters created till now, please create one from the main men");
+				System.out.println("There are no characters created till now, please create one from the main menu");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

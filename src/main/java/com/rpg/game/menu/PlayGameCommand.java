@@ -41,7 +41,7 @@ public class PlayGameCommand implements Command {
 					Character rpgChar = rpgCharacter.getRpgCharacterById(rpGame.getCharacterId());
 					gameActionService.fight(rpgChar);
 				} else if ("2".equals(action)) {
-					System.out.println("Do You want to update the name of your game beford saving Yes/No?");
+					System.out.println("Do You want to update the name of your game before saving Yes/No?");
 					String updateGameName = validUpdateGameOption();
 					if ("yes".equalsIgnoreCase(updateGameName)) {
 						String gameName = validateIsBlank();

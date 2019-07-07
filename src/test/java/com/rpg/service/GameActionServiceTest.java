@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.rpg.dao.CharacterDao;
 import com.rpg.entities.Character;
 import com.rpg.exception.CharacterServiceException;
 import com.rpg.exploration.factory.LevelFactory;

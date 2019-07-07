@@ -6,7 +6,6 @@
  */
 package com.rpg.service.impl;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -56,7 +55,7 @@ public class GameActionServiceImpl {
 
 	public void fight(Character rpgChar) {
 		try {
-			final int monsterGen = (int) (rand.nextInt() * 10 + 1);
+			final int monsterGen = rand.nextInt() * 10 + 1;
 			if (monsterGen == 0) {
 				System.out.println("You're fighting a: Wizard");
 			} else if (monsterGen == 2) {
@@ -64,7 +63,7 @@ public class GameActionServiceImpl {
 			} else {
 				System.out.println("You're fighting a: Troll");
 			}
-			Integer earnedExperience = (int) (Math.random() * 10 + 1);
+			Integer earnedExperience = (int) (rand.nextInt() * 10 + 1);
 			rpgChar.setExperience(earnedExperience);
 			rpgCharacterService.updateCharacter(rpgChar);
 			System.out.println("Your Character has gained experience");

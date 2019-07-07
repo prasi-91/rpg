@@ -23,13 +23,13 @@ public class GameControl {
 	public void startGame() {
 		MessageUtils.selectPrintableMenus("0");
 		String previousOption = "0";
-		gameloop: while (true) {
+		while (true) {
 			String option = in.getInput();
 			if (!MenuValidationUtil.validateInputForOption(previousOption, option)) {
 				MessageUtils.printInvalidOption();
 			} else if (GameConstants.EXIT_GAME.equals(option)) {
 				MessageUtils.printExitMessage();
-				break gameloop;
+				break;
 			} else if (GameConstants.GO_BACK.equals(option)) {
 				if (goBackMenuMap.get(previousOption) != null) {
 					MessageUtils.selectPrintableMenus(goBackMenuMap.get(previousOption));
