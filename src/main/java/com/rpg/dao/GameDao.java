@@ -16,11 +16,10 @@ public class GameDao implements AbstractDAO<Game> {
 
 	@Override
 	public List<Game> findAll() throws SQLException {
-		String query = GameSqlQueries.SELECT_ALL_GAMES_QUERY;
 		List<Game> rpgGamesList = new ArrayList<>();
 		try (Connection con = getConnection();
 				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(query);) {
+				ResultSet rs = stmt.executeQuery(GameSqlQueries.SELECT_ALL_GAMES_QUERY);) {
 
 			while (rs.next()) {
 				rpgGamesList.add(extractResultSet(rs));
@@ -31,9 +30,9 @@ public class GameDao implements AbstractDAO<Game> {
 
 	@Override
 	public Game findByName(String name) throws SQLException {
-		String query = GameSqlQueries.SELECT_GAME_QUERY_BY_NAME;
 		ResultSet rs = null;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.SELECT_GAME_QUERY_BY_NAME);) {
 			stmt.setString(1, name);
 			rs = stmt.executeQuery();
 
@@ -48,9 +47,9 @@ public class GameDao implements AbstractDAO<Game> {
 
 	@Override
 	public Game findById(Integer id) throws SQLException {
-		String query = GameSqlQueries.SELECT_GAME_QUERY_BY_ID;
 		ResultSet rs = null;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.SELECT_GAME_QUERY_BY_ID);) {
 			stmt.setLong(1, id);
 			rs = stmt.executeQuery();
 
@@ -65,9 +64,9 @@ public class GameDao implements AbstractDAO<Game> {
 
 	@Override
 	public boolean save(Game rpgGame) throws SQLException {
-		String query = GameSqlQueries.INSERT_GAME_QUERY;
 		ResultSet rs = null;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.INSERT_GAME_QUERY);) {
 			stmt.setString(1, rpgGame.getGameName());
 			stmt.setLong(2, rpgGame.getCharacterId());
 			stmt.executeUpdate();
@@ -79,8 +78,8 @@ public class GameDao implements AbstractDAO<Game> {
 
 	@Override
 	public boolean update(Game rpgGame) throws SQLException {
-		String query = GameSqlQueries.UPDATE_GAME_QUERY;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(GameSqlQueries.UPDATE_GAME_QUERY);) {
 			stmt.setString(1, rpgGame.getGameName());
 			stmt.setLong(2, rpgGame.getGameId());
 			stmt.executeUpdate();

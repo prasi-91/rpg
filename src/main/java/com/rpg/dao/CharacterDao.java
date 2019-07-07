@@ -16,11 +16,10 @@ public class CharacterDao implements AbstractDAO<Character> {
 
 	@Override
 	public List<Character> findAll() throws SQLException {
-		String query = CharacterSqlQueries.SELECT_ALL_CHARACTERS_QUERY;
 		List<Character> rpgCharacterList = new ArrayList<>();
 		try (Connection con = getConnection();
 				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(query);) {
+				ResultSet rs = stmt.executeQuery(CharacterSqlQueries.SELECT_ALL_CHARACTERS_QUERY);) {
 
 			while (rs.next()) {
 				rpgCharacterList.add(extractResultSet(rs));
@@ -31,9 +30,9 @@ public class CharacterDao implements AbstractDAO<Character> {
 
 	@Override
 	public Character findByName(String name) throws SQLException {
-		String query = CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_NAME;
 		ResultSet rs = null;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_NAME);) {
 			stmt.setString(1, name);
 			rs = stmt.executeQuery();
 
@@ -48,9 +47,9 @@ public class CharacterDao implements AbstractDAO<Character> {
 
 	@Override
 	public Character findById(Integer characterId) throws SQLException {
-		String query = CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_ID;
 		ResultSet rs = null;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_ID);) {
 			stmt.setLong(1, characterId);
 			rs = stmt.executeQuery();
 
@@ -65,8 +64,8 @@ public class CharacterDao implements AbstractDAO<Character> {
 
 	@Override
 	public boolean save(Character rpgChar) throws SQLException {
-		String query = CharacterSqlQueries.INSERT_CHARACTER_QUERY;
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(CharacterSqlQueries.INSERT_CHARACTER_QUERY);) {
 			stmt.setString(1, rpgChar.getCharacterName().toUpperCase());
 			stmt.setInt(2, rpgChar.getExperience());
 			stmt.setString(3, rpgChar.getWeapon());
@@ -77,9 +76,8 @@ public class CharacterDao implements AbstractDAO<Character> {
 
 	@Override
 	public boolean update(Character rpgChar) throws SQLException {
-		final String query = CharacterSqlQueries.UPDATE_CHARACTER_QUERY;
-
-		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
+		try (Connection con = getConnection();
+				PreparedStatement stmt = con.prepareStatement(CharacterSqlQueries.UPDATE_CHARACTER_QUERY);) {
 			stmt.setInt(1, rpgChar.getExperience());
 			stmt.setString(2, rpgChar.getCharacterName());
 			stmt.executeUpdate();
