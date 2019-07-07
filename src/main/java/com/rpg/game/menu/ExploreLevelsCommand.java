@@ -18,8 +18,8 @@ public class ExploreLevelsCommand implements Command {
 	@Override
 	public boolean excuteOperationChoosen() {
 		MessageUtils.printExploreLevelMenu();
-		String levelName = in.getInput();
-		System.out.println(gameActionService.exploreLevel(levelName));
+		String levelNum = in.getInput();
+		System.out.println(gameActionService.exploreLevel(levelNum));
 		return true;
 	}
 

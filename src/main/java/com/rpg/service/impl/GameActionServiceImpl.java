@@ -20,8 +20,8 @@ public class GameActionServiceImpl {
 	private CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
 	private Random rand = new Random();
 
-	public String exploreLevel(String levelName) {
-		Level level = LevelFactory.getLevel(levelName);
+	public String exploreLevel(String levelNum) {
+		Level level = LevelFactory.getLevel(levelNum);
 		if (level == null) {
 			return "Invalid level choosen";
 		}

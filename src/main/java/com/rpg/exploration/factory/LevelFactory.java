@@ -13,11 +13,11 @@ public class LevelFactory {
 			return null;
 		}
 		switch (levelName.toUpperCase()) {
-		case "LEVEL 1":
+		case "1":
 			return new GroundLevel();
-		case "LEVEL 2":
+		case "2":
 			return new MountainLevel();
-		case "LEVEL 3":
+		case "3":
 			return new IceLevel();
 		default:
 			return null;

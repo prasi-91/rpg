@@ -72,7 +72,7 @@ public class CharacterDao implements AbstractDAO<Character> {
 	public boolean save(Character rpgChar) throws SQLException {
 		try (Connection con = getConnection();
 				PreparedStatement stmt = con.prepareStatement(CharacterSqlQueries.INSERT_CHARACTER_QUERY);) {
-			stmt.setString(1, rpgChar.getCharacterName().toUpperCase());
+			stmt.setString(1, rpgChar.getCharacterName());
 			stmt.setInt(2, rpgChar.getExperience());
 			stmt.setString(3, rpgChar.getWeapon());
 			stmt.executeUpdate();
