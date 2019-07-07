@@ -6,6 +6,7 @@
  */
 package com.rpg.service.impl;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +19,7 @@ import com.rpg.exploration.factory.LevelFactory;
 public class GameActionServiceImpl {
 
 	private CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
+	private Random rand = new Random();
 
 	public String exploreLevel(String levelName) {
 		Level level = LevelFactory.getLevel(levelName);
@@ -54,8 +56,7 @@ public class GameActionServiceImpl {
 
 	public void fight(Character rpgChar) {
 		try {
-			Random ran = new Random();
-			final int monsterGen = (int) (ran.nextInt() * 10 + 1);
+			final int monsterGen = (int) (rand.nextInt() * 10 + 1);
 			if (monsterGen == 0) {
 				System.out.println("You're fighting a: Wizard");
 			} else if (monsterGen == 2) {
