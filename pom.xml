@@ -62,7 +62,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.rpg.main.RpgApplication</mainClass>
+							<mainClass>com.rpg.main.RpgMainApplication</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.;*</Class-Path>
