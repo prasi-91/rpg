@@ -34,8 +34,8 @@ public class ResumeGameCommand implements Command {
 					Character rpgChar = rpgCharacter.getRpgCharacterById(rpGame.getCharacterId());
 					gameActionService.fight(rpgChar);
 				} else if ("2".equals(action)) {
-					System.out.println("Do You want to update the name of your game befor saving yes/No?");
-					String updateGameName = in.getInput();
+					System.out.println("Do You want to update the name of your game beford saving Yes/No?");
+					String updateGameName = validUpdateGameOption();
 					if ("yes".equalsIgnoreCase(updateGameName)) {
 						String gameName = validateIsBlank();
 						rpGame.setGameName(gameName.trim());
@@ -94,4 +94,14 @@ public class ResumeGameCommand implements Command {
 		System.out.println("1 Fight");
 		System.out.println("2 Save Game");
 	}
+
+	private String validUpdateGameOption() {
+		String action = in.getInput();
+		while (!"yes".equalsIgnoreCase(action) && !"no".equalsIgnoreCase(action)) {
+			System.out.println("Please Enter Valid Action");
+			action = in.getInput();
+		}
+		return action;
+	}
+
 }
