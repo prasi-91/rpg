@@ -48,6 +48,9 @@ public class GameServiceImpl {
 
 	public void updateGame(Game rpgGame) throws GameServiceException {
 		try {
+			if (rpgGamesDao.findByName(rpgGame.getGameName()) != null) {
+				throw new GameServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
+			}
 			rpgGamesDao.update(rpgGame);
 		} catch (SQLException e) {
 			throw new GameServiceException(ExceptionMessages.ERROR_UPDATING_CHRACTER);
