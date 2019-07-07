@@ -47,7 +47,7 @@ public class GameDao implements AbstractDAO<Game> {
 	}
 
 	@Override
-	public Game findById(Long id) throws SQLException {
+	public Game findById(Integer id) throws SQLException {
 		String query = GameSqlQueries.SELECT_GAME_QUERY_BY_ID;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
@@ -94,8 +94,8 @@ public class GameDao implements AbstractDAO<Game> {
 
 	private Game extractResultSet(ResultSet rs) throws SQLException {
 		Game rpgGame = new Game();
-		rpgGame.setGameId(rs.getLong("id"));
-		rpgGame.setCharacterId(rs.getLong("character_id"));
+		rpgGame.setGameId(rs.getInt("id"));
+		rpgGame.setCharacterId(rs.getInt("character_id"));
 		rpgGame.setGameName(rs.getString("name"));
 		return rpgGame;
 

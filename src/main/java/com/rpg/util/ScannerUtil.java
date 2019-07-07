@@ -3,9 +3,17 @@ package com.rpg.util;
 import java.util.Scanner;
 
 public class ScannerUtil {
-	public static final Scanner inputHandler = new Scanner(System.in);
+	private final Scanner scanner;
 
-	public static void closeInputConnection() {
-		inputHandler.close();
+	public ScannerUtil() {
+		this(new Scanner(System.in));
+	}
+
+	public ScannerUtil(Scanner scanner) {
+		this.scanner = scanner;
+	}
+
+	public String getInput() {
+		return scanner.nextLine();
 	}
 }

@@ -47,7 +47,7 @@ public class CharacterDao implements AbstractDAO<Character> {
 	}
 
 	@Override
-	public Character findById(Long characterId) throws SQLException {
+	public Character findById(Integer characterId) throws SQLException {
 		String query = CharacterSqlQueries.SELECT_CHARACTER_QUERY_BY_ID;
 		ResultSet rs = null;
 		try (Connection con = getConnection(); PreparedStatement stmt = con.prepareStatement(query);) {
@@ -90,7 +90,7 @@ public class CharacterDao implements AbstractDAO<Character> {
 
 	private Character extractResultSet(ResultSet rs) throws SQLException {
 		Character rpgChar = new Character();
-		rpgChar.setId(rs.getLong("id"));
+		rpgChar.setId(rs.getInt("id"));
 		rpgChar.setCharacterName(rs.getString("name"));
 		rpgChar.setExperience(rs.getInt("experience"));
 		rpgChar.setWeapon(rs.getString("weapon"));

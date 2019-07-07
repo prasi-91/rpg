@@ -12,9 +12,10 @@ import com.rpg.util.ScannerUtil;
 
 public class ResumeGameCommand implements Command {
 
-	private static GameServiceImpl rpgGameService = new GameServiceImpl();
-	private static GameActionServiceImpl gameActionService = new GameActionServiceImpl();
-	private static CharacterServiceImpl rpgCharacter = new CharacterServiceImpl();
+	private GameServiceImpl rpgGameService = new GameServiceImpl();
+	private GameActionServiceImpl gameActionService = new GameActionServiceImpl();
+	private CharacterServiceImpl rpgCharacter = new CharacterServiceImpl();
+	private ScannerUtil in = new ScannerUtil();
 
 	@Override
 	public boolean excuteOperationChoosen() {
@@ -34,7 +35,7 @@ public class ResumeGameCommand implements Command {
 					gameActionService.fight(rpgChar);
 				} else if ("2".equals(action)) {
 					System.out.println("Do You want to update the name of your game befor saving yes/No?");
-					String updateGameName = ScannerUtil.inputHandler.nextLine();
+					String updateGameName = in.getInput();
 					if ("yes".equalsIgnoreCase(updateGameName)) {
 						String gameName = validateIsBlank();
 						rpGame.setGameName(gameName);
@@ -58,20 +59,20 @@ public class ResumeGameCommand implements Command {
 	}
 
 	private String validateSubActionMenu() {
-		String action = ScannerUtil.inputHandler.nextLine();
+		String action = in.getInput();
 		while (!"1".equals(action) && !"2".equals(action)) {
 			System.out.println("Please Enter Valid Action");
-			action = ScannerUtil.inputHandler.nextLine();
+			action = in.getInput();
 		}
 		return action;
 	}
 
 	private Game validateGameName() throws GameServiceException {
-		String gameName = ScannerUtil.inputHandler.nextLine();
+		String gameName = in.getInput();
 		Game rpGame = rpgGameService.findGame(gameName);
 		while (rpGame == null) {
 			System.out.println("Please Enter Valid Game Name From the options displayed");
-			gameName = ScannerUtil.inputHandler.nextLine();
+			gameName = in.getInput();
 			rpGame = rpgGameService.findGame(gameName);
 		}
 		return rpGame;
@@ -79,10 +80,10 @@ public class ResumeGameCommand implements Command {
 
 	private String validateIsBlank() {
 		System.out.println("Enter the new Name");
-		String gameName = ScannerUtil.inputHandler.nextLine();
+		String gameName = in.getInput();
 		while (gameName == null || gameName.trim().isEmpty()) {
 			System.out.println("Enter a valid New Name");
-			gameName = ScannerUtil.inputHandler.nextLine();
+			gameName = in.getInput();
 		}
 
 		return gameName;

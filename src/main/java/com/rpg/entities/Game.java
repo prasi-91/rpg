@@ -2,8 +2,8 @@ package com.rpg.entities;
 
 public class Game {
 
-	private Long gameId;
-	private Long characterId;
+	private Integer gameId;
+	private Integer characterId;
 	private String gameName;
 
 	public String getGameName() {
@@ -14,19 +14,19 @@ public class Game {
 		this.gameName = gameName;
 	}
 
-	public Long getGameId() {
+	public Integer getGameId() {
 		return gameId;
 	}
 
-	public void setGameId(Long gameId) {
+	public void setGameId(Integer gameId) {
 		this.gameId = gameId;
 	}
 
-	public Long getCharacterId() {
+	public Integer getCharacterId() {
 		return characterId;
 	}
 
-	public void setCharacterId(Long characterId) {
+	public void setCharacterId(Integer characterId) {
 		this.characterId = characterId;
 	}
 

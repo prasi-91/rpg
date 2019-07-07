@@ -21,7 +21,7 @@ public class CharacterServiceImpl {
 		}
 	}
 
-	public Character getRpgCharacterById(Long id) throws CharacterServiceException {
+	public Character getRpgCharacterById(Integer id) throws CharacterServiceException {
 		try {
 			return rpgCharacterDao.findById(id);
 		} catch (SQLException e) {

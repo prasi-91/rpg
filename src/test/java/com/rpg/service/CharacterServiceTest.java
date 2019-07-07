@@ -2,7 +2,6 @@ package com.rpg.service;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.matchers.Any;
 
 import com.rpg.dao.CharacterDao;
 import com.rpg.entities.Character;
@@ -66,15 +64,15 @@ public class CharacterServiceTest {
 	@Test
 	public void testFindById() throws CharacterServiceException, SQLException {
 		Character rpgChar = new Character();
-		Mockito.when(charDao.findById(new Long(1))).thenReturn(rpgChar);
-		rpgChar = characterServiceImpl.getRpgCharacterById((new Long(1)));
+		Mockito.when(charDao.findById(1)).thenReturn(rpgChar);
+		rpgChar = characterServiceImpl.getRpgCharacterById(1);
 		assertNotNull(rpgChar);
 	}
 
 	@Test(expected = CharacterServiceException.class)
 	public void testFindByIdException() throws CharacterServiceException, SQLException {
-		Mockito.when(charDao.findById(new Long(1))).thenThrow(SQLException.class);
-		characterServiceImpl.getRpgCharacterById((new Long(1)));
+		Mockito.when(charDao.findById(1)).thenThrow(SQLException.class);
+		characterServiceImpl.getRpgCharacterById(1);
 	}
 
 	@Test

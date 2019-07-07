@@ -7,11 +7,12 @@ import com.rpg.util.ScannerUtil;
 public class ExploreLevelsCommand implements Command {
 
 	private static GameActionServiceImpl gameActionService = new GameActionServiceImpl();
+	private static ScannerUtil in = new ScannerUtil();
 
 	@Override
 	public boolean excuteOperationChoosen() {
 		MessageUtils.printExploreLevelMenu();
-		String levelName = ScannerUtil.inputHandler.nextLine();
+		String levelName = in.getInput();
 		System.out.println(gameActionService.exploreLevel(levelName));
 		return true;
 	}

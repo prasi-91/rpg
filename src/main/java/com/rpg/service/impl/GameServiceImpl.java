@@ -26,11 +26,7 @@ public class GameServiceImpl {
 		try {
 			return rpgGamesDao.findByName(name);
 		} catch (SQLException e) {
-			if (e.getMessage().contains("column NAME is not unique")) {
-				throw new GameServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
-			} else {
-				throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
-			}
+			throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
 		}
 	}
 
@@ -38,7 +34,11 @@ public class GameServiceImpl {
 		try {
 			rpgGamesDao.save(rpgGame);
 		} catch (SQLException e) {
-			throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
+			if (e.getMessage().contains("column NAME is not unique")) {
+				throw new GameServiceException(ExceptionMessages.UNIQUE_NAME_ERROR);
+			} else {
+				throw new GameServiceException(ExceptionMessages.ERROR_SAVING_GAME);
+			}
 		}
 	}
 

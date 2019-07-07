@@ -9,7 +9,7 @@ public interface AbstractDAO<T> {
 
 	T findByName(String name) throws SQLException;
 
-	T findById(Long id) throws SQLException;
+	T findById(Integer id) throws SQLException;
 
 	boolean save(T t) throws SQLException;
 

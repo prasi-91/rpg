@@ -9,18 +9,19 @@ import com.rpg.util.ScannerUtil;
 
 public class NewGameCommand implements Command {
 
-	private static CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
-	private static GameServiceImpl rpGameService = new GameServiceImpl();
+	private CharacterServiceImpl rpgCharacterService = new CharacterServiceImpl();
+	private GameServiceImpl rpGameService = new GameServiceImpl();
+	private ScannerUtil in = new ScannerUtil();
 
 	@Override
 	public boolean excuteOperationChoosen() {
 		System.out.println("Select the character Name to Start new Game with");
 		try {
 			rpgCharacterService.fetchAllRpgCharacters().forEach(item -> System.out.println(item.getCharacterName()));
-			String characterName = ScannerUtil.inputHandler.nextLine();
+			String characterName = in.getInput();
 			Character rpgChar = verifyAndGetCharacter(characterName);
 			System.out.println("Select the game Name you want to save");
-			String gameName = ScannerUtil.inputHandler.nextLine();
+			String gameName = in.getInput();
 			Game rpGame = new Game();
 			rpGame.setCharacterId(rpgChar.getId());
 			rpGame.setGameName(gameName);
@@ -42,13 +43,13 @@ public class NewGameCommand implements Command {
 	private Character verifyAndGetCharacter(String characterName) throws CharacterServiceException {
 		while (characterName == null || characterName.trim().isEmpty()) {
 			System.out.println("Please enter a valid Name");
-			characterName = ScannerUtil.inputHandler.nextLine();
+			characterName = in.getInput();
 		}
 		Character rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
 		while (rpgChar == null) {
 			rpgChar = rpgCharacterService.getRpgCharacterByName(characterName);
 			System.out.println("Please enter a valid Name");
-			characterName = ScannerUtil.inputHandler.nextLine();
+			characterName = in.getInput();
 		}
 		return rpgChar;
 	}

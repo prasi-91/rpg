@@ -2,16 +2,16 @@ package com.rpg.entities;
 
 public class Character {
 
-	private Long id;
+	private Integer id;
 	private String characterName;
 	private String weapon;
 	private int experience;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

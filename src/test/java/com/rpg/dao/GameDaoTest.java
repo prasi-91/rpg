@@ -24,9 +24,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.sqlite.SQLiteDataSource;
 
-import com.rpg.entities.Character;
+import com.rpg.entities.Game;
+import com.rpg.entities.Game;
 
-public class CharacterDaoTest {
+public class GameDaoTest {
 
 	@Mock
 	private DBConnection dbConnect;
@@ -47,16 +48,23 @@ public class CharacterDaoTest {
 	ResultSet mockResultSet;
 
 	@InjectMocks
-	CharacterDao charDao;
+	GameDao gameDao;
+
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownClass() {
+	}
 
 	@Before
 	public void setUp() throws SQLException {
 		MockitoAnnotations.initMocks(this);
-		Character character = new Character();
-		character.setId(1);
-		character.setCharacterName("test");
-		character.setWeapon("test");
-		character.setExperience(0);
+		Game game = new Game();
+		game.setGameId(1);
+		game.setGameName("test");
+		game.setCharacterId(1);
 		Mockito.when(sqlLiteDs.getConnection()).thenReturn(mockConn);
 		Mockito.when(mockConn.createStatement()).thenReturn(stmnt);
 		Mockito.when(mockConn.prepareStatement("test")).thenReturn(mockPreparedStmnt);
@@ -67,46 +75,43 @@ public class CharacterDaoTest {
 		Mockito.when(mockResultSet.first()).thenReturn(true);
 		Mockito.when(mockResultSet.next()).thenReturn(true);
 		Mockito.when(mockResultSet.getInt(anyString())).thenReturn(1);
-		Mockito.when(mockResultSet.getString(anyString())).thenReturn(character.getCharacterName());
-		Mockito.when(mockResultSet.getString(anyString())).thenReturn(character.getWeapon());
+		Mockito.when(mockResultSet.getString(anyString())).thenReturn(game.getGameName());
 		Mockito.when(mockResultSet.getInt(anyString())).thenReturn(0);
 	}
 
 	@Test
 	public void testFindAll() throws Exception {
-		List<Character> testList = charDao.findAll();
+		List<Game> testList = gameDao.findAll();
 		assertNotNull(testList);
 	}
 
 	@Test
 	public void testFindByName() throws SQLException {
-		Character character = charDao.findByName("test");
-		assertNotNull(character);
+		Game game = gameDao.findByName("test");
+		assertNotNull(game);
 	}
 
 	@Test
 	public void testFindById() throws SQLException {
-		Character character = charDao.findById(1);
-		assertNotNull(character);
+		Game game = gameDao.findById(1);
+		assertNotNull(game);
 	}
 
 	@Test
 	public void testSaveChar() throws SQLException {
-		Character character = new Character();
-		character.setCharacterName("test");
-		character.setWeapon("test");
-		character.setExperience(0);
-		assertTrue(charDao.save(character));
+		Game game = new Game();
+		game.setGameName("test");
+		game.setCharacterId(1);
+		assertTrue(gameDao.save(game));
 
 	}
 
 	@Test
 	public void testUpdate() throws SQLException {
-		Character character = new Character();
-		character.setId(1);
-		character.setCharacterName("test");
-		character.setWeapon("test");
-		character.setExperience(0);
-		assertNotNull(charDao.update(character));
+		Game game = new Game();
+		game.setGameId(1);
+		game.setGameName("test_junit");
+		game.setCharacterId(1);
+		assertNotNull(gameDao.update(game));
 	}
 }

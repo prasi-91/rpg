@@ -2,6 +2,7 @@ package com.rpg.game.menu;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.rpg.constants.GameConstants;
 import com.rpg.util.MenuValidationUtil;
@@ -12,12 +13,13 @@ public class GameControl {
 
 	private static final Map<String, String> goBackMenuMap = MenuValidationUtil.goBackMenuMap();
 	private static final List<String> printableMenuList = MenuValidationUtil.nonActionMenuList();
+	private static final ScannerUtil in = new ScannerUtil();
 
 	public void startGame() {
 		MessageUtils.selectPrintableMenus("0");
 		String previousOption = "0";
 		gameloop: while (true) {
-			String option = ScannerUtil.inputHandler.nextLine();
+			String option = in.getInput();
 			if (!MenuValidationUtil.validateInputForOption(previousOption, option)) {
 				MessageUtils.printInvalidOption();
 			} else if (GameConstants.EXIT_GAME.equals(option)) {
