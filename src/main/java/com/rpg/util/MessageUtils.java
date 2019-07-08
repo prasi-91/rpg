@@ -5,57 +5,47 @@ import com.rpg.constants.GameConstants;
 public class MessageUtils {
 
 	private static void printMainMenu() {
-		System.out.println(" ");
-		System.out.println(GameConstants.ANSI_BLUE + "Select the operation that you would like to perform"
-				+ GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "1 Create a Character" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "2 Explore" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_CYAN + "3 Start Game" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(" ");
+		System.out.println("\n" + GameConstants.ANSI_BLUE + "Select the operation that you would like to perform"
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_YELLOW + "1 Create a Character"
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_GREEN + "2 Explore" + GameConstants.ANSI_RESET
+				+ "\n" + GameConstants.ANSI_CYAN + "3 Start Game" + GameConstants.ANSI_RESET + "\n"
+				+ GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET + "\n");
 	}
 
 	public static void printInvalidOption() {
-		System.out.println(" ");
-		System.out.println(GameConstants.ANSI_RED + "Please Select a valid option" + GameConstants.ANSI_RESET);
-		System.out.println(" ");
+		System.out.println(
+				"\n " + GameConstants.ANSI_RED + "Please Select a valid option" + GameConstants.ANSI_RESET + "\n");
 	}
 
 	private static void printMainExploreMenu() {
 		System.out.println(" ");
 		System.out.println(GameConstants.ANSI_BLUE + "\n" + "Select the number which you want to explore"
-				+ GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "4 Explore Characters" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "5 Explore levels" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_CYAN + GameConstants.GO_BACK_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(" ");
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_YELLOW + "4 Explore Characters"
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_GREEN + "5 Explore levels"
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_CYAN + GameConstants.GO_BACK_MENU_MESSAGE
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE
+				+ GameConstants.ANSI_RESET + "\n");
 	}
 
 	public static void printExploreLevelMenu() {
-		System.out.println(" ");
-		System.out.println(
-				GameConstants.ANSI_BLUE + "Select the level number you would like explore:" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "1" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "2" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_CYAN + "3" + GameConstants.ANSI_RESET);
-		System.out.println(" ");
+		System.out.println("\n" + GameConstants.ANSI_BLUE + "Select the level number you would like explore:"
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_YELLOW + "1" + GameConstants.ANSI_RESET + "\n"
+				+ GameConstants.ANSI_GREEN + "2" + GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_CYAN + "3"
+				+ GameConstants.ANSI_RESET + "\n");
 	}
 
 	private static void printGameActionMainMenu() {
-		System.out.println(" ");
-		System.out.println(GameConstants.ANSI_BLUE + "\n" + "Select an option" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "6 Create and save" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "7 Play/Resume" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_CYAN + GameConstants.GO_BACK_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_RED + GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET);
-		System.out.println(" ");
+		System.out.println("\n" + GameConstants.ANSI_BLUE + "\n" + "Select an option" + GameConstants.ANSI_RESET + "\n"
+				+ GameConstants.ANSI_YELLOW + "6 Create and save" + GameConstants.ANSI_RESET + "\n"
+				+ GameConstants.ANSI_GREEN + "7 Play/Resume" + GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_CYAN
+				+ GameConstants.GO_BACK_MENU_MESSAGE + GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_RED
+				+ GameConstants.EXIT_MENU_MESSAGE + GameConstants.ANSI_RESET + "\n");
 	}
 
 	public static void printGameActionSubMenu() {
-		System.out.println(GameConstants.ANSI_BLUE  + "\n" + "Select The option you want to perform" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_YELLOW + "1 Fight" + GameConstants.ANSI_RESET);
-		System.out.println(GameConstants.ANSI_GREEN + "2 Save Game" +  GameConstants.ANSI_RESET);
+		System.out.println(GameConstants.ANSI_BLUE + "\n" + "Select The option you want to perform"
+				+ GameConstants.ANSI_RESET + "\n" + GameConstants.ANSI_YELLOW + "1 Fight" + GameConstants.ANSI_RESET
+				+ "\n" + GameConstants.ANSI_GREEN + "2 Save Game" + GameConstants.ANSI_RESET);
 	}
 
 	public static void printWelcomeMessage() {
